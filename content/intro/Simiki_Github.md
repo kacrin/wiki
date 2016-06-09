@@ -53,7 +53,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 git diff查看difference
 ```
-$ git diff readme.txt 
+$ git diff readme.txt
 diff --git a/readme.txt b/readme.txt
 index 46d49bf..9247db6 100644
 --- a/readme.txt
@@ -65,10 +65,10 @@ index 46d49bf..9247db6 100644
 
 ```
 
-rules before 
+rules before
 
 ```
-$ git commit -m "upload a file" 
+$ git commit -m "upload a file"
 ```
 
 [git](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000)
@@ -108,12 +108,90 @@ $ git push -u origin master
 git push origin master
 ```
 
+### git branch ###
+
+查看分支
+```
+$ git branch
+
+```
+创建分支
+
+```
+$ git branch <name>
+```
+切换分支
+
+```
+$ git checkout <name>
+
+```
+创建+切换分支
+
+```
+$ git checkout -b <name>
+
+```
+合并某分支到当前分支
+
+```
+$ git merge <name>
+
+```
+删除分支
+
+```
+git branch -d <name>
+
+```
+
+## simiki自定义 ##
+
+### Introduction ###
+
+[simiki](http://simiki.org/zh-docs/)主題使用[Jinja2](http://jinja.pocoo.org/)一個強大模板引擎，由python开发
+在content文件下存放源文件.md格式，使用[Markdown](http://www.jianshu.com/p/1e402922ee32/)语法编写，[马克飞象使用案例](https://maxiang.io)
+
+### simiki基本命令 ###
+
+simiki安装首先要安装pip
+```
+$ pip install simiki
+```
+直接下载[simiki](https://github.com/tankywoo/simiki)
+```
+$ unzip simiki.zip
+$ cd simiki
+$ python setup.py install
+```
 
 
+安装好Simiki后, 就可以使用simiki命令
 
 
+```
+# 查看 simiki 命令帮助文档
+$ simiki -h
 
+# 生成静态页面到output目录 (需要在站点根目录下执行)
+$ simiki g
 
+# 生成静态页面(包括草稿)到output目录 (需要在站点根目录下执行)
+$ simiki g --draft
+
+# 本地预览模式(开发模式)
+$ simiki p
+
+# 本地预览模式指定绑定IP和端口, 如绑定到所有IP的8888端口
+$ simiki p --host 0.0.0.0 --port 8888
+
+# 本地预览模式监控content目录, 有变更自动更新生成相应静态页面
+$ simiki p -w
+
+# 升级Simiki后检查和更新本地内置的脚本及主题(如fabfile.py, simple主题)
+$ simiki update
+
+```
 
 
 

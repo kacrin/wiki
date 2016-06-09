@@ -30,3 +30,26 @@ apt-get install ibus ibus-pinyin
 * markdown语法使用
 * python编写框架
 
+### 安装sublime ###
+
+sublime无法使用中文输入
+
+### 安装Lighttable ###
+
+linux下强大开源代码编辑器，使用与sublime大致相同
+
+```
+$ tar -xzf LighttableLinux64.tar.gz
+$ cd Lighttable
+$ ./Lighttable
+```
+
+## Iceweasel ##
+
+安装flash插件，[flash地址](https://get.adobe.com/flashplayer/)下载完后
+```
+$ tar -xzvf install_flash_player_11_linux.x86_64.tar.zip
+
+$ cp libflashplayer.so /usr/lib/mozilla/plugins/
+```
+

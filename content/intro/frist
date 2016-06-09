@@ -139,3 +139,10 @@ Bob-->Alice: I am good thanks!
 
 
 [^demo]: 这是一个示例脚注。请查阅 [MultiMarkdown 文档](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes) 关于脚注的说明。 **限制：** 印象笔记的笔记内容使用 [ENML][5] 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致`脚注`和`TOC`无法正常点击。
+
+
+
+
+
+light table-0.8.1 
+https://github.com/LightTable/LightTable/releases

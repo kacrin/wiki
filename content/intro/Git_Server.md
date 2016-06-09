@@ -17,11 +17,11 @@ linux版本为ubuntu 10 ,安装vmtools,
 
 ### ssh,git ###
 
-安装ssh-server , git 
+安装ssh-server , git
 ```
 $ sudo apt-get install git-core
 $ sudo apt-get install openssh-server openssh-client
-``` 
+```
 
 ### git server搭建 ###
 
@@ -43,6 +43,12 @@ $ sudo adduser git -d /home/git
 $ sudo git init --bare warehouse.git
 ```
 
+**注意用户权限问题**非root用户，普通用户权限把仓库建在需要root权限目录下需要修改上一级目录用户归属
+```
+$ chown git:git <filename>
+```
+
+
 设置git用户密码
 ```
 $ sudo passwd git
@@ -56,6 +62,41 @@ $ git push -u origin master
 ```
 origin 为远程仓库名称,绑定git@192.168....
 git push -u origin master 传输到origin的master分支
+
+## Git Server自动化部署 ##
+
+### git勾子 ###
+
+Git可以定制一些钩子，这些钩子可以在特定的情况下被执行，分为Client端的钩子和Server端的钩子
+[git hooks](http://blog.csdn.net/hongchangfirst/article/details/46693237)分为ClientSide hooks 和 ServerSide hooks
+
+[官方git hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)介绍，hooks文件夹下各个文件被调用勾子说明
+
+### 自动化部署 ###
+
+**需要在/var/www/下创建warehouse文件夹，并在/var/www/warehouse目录下执行**
+```
+$ git init
+$ git remote add origin /home/ninjia/warehouse.git
+```
+把远程仓库地址命名为origin，方便下次直接调用
+
+
+修改hooks文件夹下post-receive.sample文件去掉.sample
+使用bash脚本，修改post-receive如下
+```
+#!/bin/sh
+export LANG=zh_CN.UTF-8
+cd /var/www/warehouse
+unset GIT_DIR
+git pull origin master
+```
+使用git后，push文件后需要git pull到服务器上才可以更新
+git有勾子设置，在hooks文件夹内，调用勾子时shell脚本可以执行，但是git pull时会报错，提示"fatal:Not a git repository;".原因是执行cd后，继续执行git语句拉取到时候还是在hooks文件夹下，不是cd到文件路径
+
+**添加unset GIT_DIR**
+git的hooks里面默认有一些环境变量，会导致无论在哪个语句之后执行git命令都会有一个默认的环境路径，既然这样unset 掉默认的GIT环境变量就可以了
+
 
 ## 说明 ##
 
@@ -81,7 +122,7 @@ $ git fetch [remote-name]
 $ userdel username
 $ groupdel username
 $ usermod –G username username
-```  
+```
 强制删除该用户的主目录和主目录下的所有文件和子目录
 
 [linux用户组/用户 管理](http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html)
