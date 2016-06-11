@@ -106,6 +106,16 @@ git pull origin master
 git有勾子设置，在hooks文件夹内，调用勾子时shell脚本可以执行，但是git pull时会报错，提示"fatal:Not a git repository;".原因是执行cd后，继续执行git语句拉取到时候还是在hooks文件夹下，不是cd到文件路径</p>
 <p><strong>添加unset GIT_DIR</strong>
 git的hooks里面默认有一些环境变量，会导致无论在哪个语句之后执行git命令都会有一个默认的环境路径，既然这样unset 掉默认的GIT环境变量就可以了</p>
+<p><strong>一定要设置warehouse.git文件夹下权限和/var/www/warehouse/.git/文件夹下所有文件权限</strong>
+在普通用户组非root的权限下，需要设置文件归属
+设置warehouse.git和.git所有文件归属为git:git用户</p>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ninjia</span><span class="o">/</span><span class="n">warehouse</span><span class="p">.</span><span class="n">git</span>
+<span class="err">$</span> <span class="n">chown</span> <span class="n">git</span><span class="o">:</span><span class="n">git</span> <span class="o">*</span> <span class="o">-</span><span class="n">R</span>
+<span class="err">$</span> <span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">warehouse</span><span class="o">/</span><span class="p">.</span><span class="n">git</span>
+<span class="err">$</span> <span class="n">chown</span> <span class="n">git</span><span class="o">:</span><span class="n">git</span> <span class="o">*</span> <span class="o">-</span><span class="n">R</span>
+</pre></div>
+
+
 <h2 id="_2">说明</h2>
 <h3 id="_3">结构</h3>
 <p>创建的warehouse.git ,在clone 后会存在warehouse文件夹,
