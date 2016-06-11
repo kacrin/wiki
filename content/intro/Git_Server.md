@@ -97,6 +97,18 @@ git有勾子设置，在hooks文件夹内，调用勾子时shell脚本可以执�
 **添加unset GIT_DIR**
 git的hooks里面默认有一些环境变量，会导致无论在哪个语句之后执行git命令都会有一个默认的环境路径，既然这样unset 掉默认的GIT环境变量就可以了
 
+**一定要设置warehouse.git文件夹下权限和/var/www/warehouse/.git/文件夹下所有文件权限**
+在普通用户组非root的权限下，需要设置文件归属
+设置warehouse.git和.git所有文件归属为git:git用户
+
+```
+$ cd /home/ninjia/warehouse.git
+$ chown git:git * -R
+$ cd /var/www/warehouse/.git
+$ chown git:git * -R
+
+```
+
 
 ## 说明 ##
 
