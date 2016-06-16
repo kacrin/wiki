@@ -91,12 +91,12 @@ pre .il { color: #0000cf; font-weight: bold } /* Literal.Number.Integer.Long */
 .hlcode pre .gs { color: #000000; font-weight: bold } /* Generic.Strong */
 .hlcode pre .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
 .hlcode pre .gt { color: #a40000; font-weight: bold } /* Generic.Traceback */
-.hlcode pre .kc { color: #204a87; font-weight: bold } /* Keyword.Constant */
-.hlcode pre .kd { color: #204a87; font-weight: bold } /* Keyword.Declaration */
-.hlcode pre .kn { color: #204a87; font-weight: bold } /* Keyword.Namespace */
-.hlcode pre .kp { color: #204a87; font-weight: bold } /* Keyword.Pseudo */
-.hlcode pre .kr { color: #204a87; font-weight: bold } /* Keyword.Reserved */
-.hlcode pre .kt { color: #204a87; font-weight: bold } /* Keyword.Type */
+.hlcode pre .kc { color: #CD5C5C; font-weight: bold } /* Keyword.Constant */
+.hlcode pre .kd { color: #CD5C5C; font-weight: bold } /* Keyword.Declaration */
+.hlcode pre .kn { color: #CD5C5C; font-weight: bold } /* Keyword.Namespace */
+.hlcode pre .kp { color: #CD5C5C; font-weight: bold } /* Keyword.Pseudo */
+.hlcode pre .kr { color: #CD5C5C; font-weight: bold } /* Keyword.Reserved */
+.hlcode pre .kt { color: #CD5C5C; font-weight: bold } /* Keyword.Type */
 .hlcode pre .ld { color: #000000 } /* Literal.Date */
 .hlcode pre .m { color: #0000cf; font-weight: bold } /* Literal.Number */
 .hlcode pre .s { color: #BCEE68 } /* Literal.String */
@@ -112,7 +112,7 @@ pre .il { color: #0000cf; font-weight: bold } /* Literal.Number.Integer.Long */
 .hlcode pre .nn { color: #000000 } /* Name.Namespace */
 .hlcode pre .nx { color: #FFFFFF } /* Name.Other */
 .hlcode pre .py { color: #000000 } /* Name.Property */
-.hlcode pre .nt { color: #204a87; font-weight: bold } /* Name.Tag */
+.hlcode pre .nt { color: #CD5C5C; font-weight: bold } /* Name.Tag */
 .hlcode pre .nv { color: #000000 } /* Name.Variable */
 .hlcode pre .ow { color: #A2B5CD; font-weight: bold } /* Operator.Word */
 .hlcode pre .w { color: #f8f8f8; text-decoration: underline } /* Text.Whitespace */
