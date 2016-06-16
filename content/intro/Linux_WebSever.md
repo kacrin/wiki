@@ -58,7 +58,7 @@ allow from all
 $ sudo /etc/init.d/apache2 restart 
 ```
 
-### 修改mysql配置文件,把数据库默认编码全部改为UTF-8,默认配置文件存放在/etc/my.cnf或者/etc/mysql/my.cnf[链接地址](http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001391435131816c6a377e100ec4d43b3fc9145f3bb8056000)
+修改mysql配置文件,把数据库默认编码全部改为UTF-8,默认配置文件存放在/etc/my.cnf或者/etc/mysql/my.cnf[链接地址](http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001391435131816c6a377e100ec4d43b3fc9145f3bb8056000)
 
 ```
 [client]
@@ -106,7 +106,9 @@ $ git push -u origin master
 
 ### 配置服务器域名 ###
 
-域名配置[http://www.cnblogs.com/zhangyabin---acm/p/4358510.html](http://www.cnblogs.com/zhangyabin---acm/p/4358510.html)
+域名配置
+
+[http://www.cnblogs.com/zhangyabin---acm/p/4358510.html](http://www.cnblogs.com/zhangyabin---acm/p/4358510.html)
 [http://www.cnblogs.com/ylan2009/archive/2012/02/25/2368028.html](http://www.cnblogs.com/ylan2009/archive/2012/02/25/2368028.html)
 
 ```
