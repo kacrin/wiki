@@ -53,3 +53,12 @@ $ tar -xzvf install_flash_player_11_linux.x86_64.tar.zip
 $ cp libflashplayer.so /usr/lib/mozilla/plugins/
 ```
 
+
+## rsync 文件复制工具 ##
+
+rsync 可以显示复制文件进度
+
+```
+rsync -av --progress [Path] [ToPath]
+```
+
