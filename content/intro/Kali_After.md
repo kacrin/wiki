@@ -62,3 +62,9 @@ rsync 可以显示复制文件进度
 rsync -av --progress [Path] [ToPath]
 ```
 
+## grub change image ##
+
+grub image file 
+```
+/usr/share/image/grub
+```
