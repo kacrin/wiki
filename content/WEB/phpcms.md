@@ -43,6 +43,7 @@ NameVirtualHost *:12551
 
 利用循环 获取内容标签,加自定义php判断,调用不同css样式显示内容(原因每个css样式不同)
 pc 标签调用获取内容模块内容
+
 ```
 {pc:content action="lists" catid="13" num="6"  order="listorder ASC"}
 <?php
@@ -64,6 +65,7 @@ pc 标签调用获取内容模块内容
 ```
 
 标准标签调用方法
+
 ```
 {pc:content action="lists" catid="17" num="8" order="listorder ASC"}
 {loop $data $key $r}
@@ -73,9 +75,31 @@ pc 标签调用获取内容模块内容
 ```
 
 引用模板
+
 ```
 {template "content","header"}
 ```
+
+## phpcms 后台管理 ##
+
+调用标签内容,首先要在后台里,内容模块->管理栏目里,创建栏目,再创建子栏目(相当于二级标签)
+
+页面模板在 phpcms/templates/default/content/ 路径下
+选择 栏目类型 栏目主页面(page_xxx.html) 列表页面(list_xxx.html),内容页面(show_xxx.htm)
+在栏目下 修改里选择自己创建好的 模板
+
+每次修改都要更新栏目缓存
+
+### 模型 ###
+
+内容下有模型,可供自己选择(文章模型,图片模型,视频模型,下载模型),里面字段可以自己根据需要增减
+当不能达到自己需要可以新建一个模型,模型英文名字对应数据库phpcms_V9 里表名
+
+### 管理内容 ###
+
+创建好栏目,可以在栏目下 创建 文章类 ,具体 show_xxx.html ,可以查看phpcms/template/default/content/show.html
+
+里面调用 标签 方法
 
 
 ## jquery 动画展示图层插件 ##
@@ -128,9 +152,28 @@ pc 标签调用获取内容模块内容
 object type="application/x-shockwave-flash" data="{$VideoUrl}" width="100%" height="500px" id="youku-player"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><param name="movie" value="{$VideoUrl}"><param name="flashvars" value="imglogo=&amp;paid=0&amp;partnerId=c097e4bfcaaf53f4&amp;styleid=9"></object>	
 ```
 
+### 引用手机端兼容视频 ###
+
+{$VideoUrl}引用video中通用模块,网址分享通用模块,只把src地址取下放到后台数据库中
+
+<iframe></iframe>中直接放到html模板中,这里使用youku通用链接
+```
+<iframe height="500" width="100%" src="{$VideoUrl}" frameborder=0 allowfullscreen></iframe>
+```
+
+### 兼容 IE 手机 ###
+
+设置最小宽度和最大宽度,
+
+```
+min-width:200px;
+max-width:200px;
+```
+
 ### IE 兼容css3 ###
 
 引用pie.js 具体支持哪些样式还要研究,阴影是可以
+
 
 ```
 
@@ -212,4 +255,16 @@ commonposition{_position:absolute;_top: expression(documentElement.scrollTop + 2
 
 ```
 
-## 
+### 引导新浪微博 ###
+
+```
+
+iframe width="100%" height="450" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2440537575&verifier=70a007d1&dpc=1"></iframe>
+
+```
+
+## ajax 异步获取
+
+## phpcms 帮助文档 ##
+
+[phpcms帮助文档](http://v9.help.phpcms.cn/)
