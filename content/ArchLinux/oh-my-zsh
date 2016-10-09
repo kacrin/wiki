@@ -1,0 +1,88 @@
+---
+title: "oh-my-zsh"
+layout: page
+date: 2016-10-8 01:00
+---
+
+
+# zsh安装 使用 #
+
+https://zhuanlan.zhihu.com/p/19556676
+
+配置文件在
+~/.zshrc
+
+插件在括号里添加
+plugins=(git textmate ruby autojump osx mvn gradle)
+
+
+
+2. 在目录中穿梭(cd命令)
+
+在写代码过程中，会在各个目录之间来回切换，原来用bash时有两点最不爽:
+
+    对cd命令有TAB补全的功能，但每一级目录都需要按TAB（并且有多个备选项的话需要继续输入才行）还是觉得繁琐，觉得效率不高;
+    pushd/popd/dirs虽然很有用，但很多时候等你想回到过去的某个目录时，才发现当时忘记pushd了
+
+    
+    
+2.2 autojump: 快速进入频繁访问的目录（bash/zsh通用）
+
+使用方法
+
+    下载这个 https://github.com/rupa/z/blob/master/z.sh （这个文件名跟zsh没有必然联系），放到某个位置（比如/usr/local/lib/z.sh）;
+    在~/.bashrc或者~/.zshrc里面加入一句source /usr/local/lib/z.sh，这使得以后的cd命令会被z.sh统计各目录访问频率;
+    你得按老方法切换目录一阵，以便z.sh能够知道哪些目录是最常用的;
+    用z -l命令即可列出历史上你访问各个目录的频率了;
+    用z regex 命令即可进入你频繁访问的目录
+
+    
+    
+5.4 让M-backspace象bash那样只回删一个单词
+
+这是zsh跟bash不兼容的另一个地方，M-backspace会回删整个参数，而不是像bash/emacs那样只删除一个单词。
+
+解决方法是在~/.zshrc中加入:
+
+autoload -U select-word-style 
+select-word-style bash
+
+（来自: http://stackoverflow.com/a/1438523 )
+
+
+
+=======================自带插件===============================
+快捷插件
+https://segmentfault.com/a/1190000002658335
+
+自带的插件
+
+其实我用了 oh-my-zsh 快三个月后才知道原来他自带了很多插件没有开启。。。
+
+如何开启？找到 ~/.zshrc 有一行 plugins=(git)，想加什么插件就把名字放里面就是了，比如plugins=(rails git ruby) 就开启了rails，git 和 ruby 三个插件。
+
+更多插件请进入 ~/.oh-my-zsh/plugins文件夹探索，也可以看看 wiki 里的 Plugins Overview，每个人的需求不一样，里面有一些比较神奇的插件，比如敲两下esc 它会给你自动加上 sudo 的 sudo 插件，让复制显示进度条的cp插件，解压用的 extract 插件（有没有觉得在命令行下敲一大堆选项才能解压有点奇怪？），vi 粉的vi-mode 等等...
+
+======z==========
+
+嗯，这也是个自带的但是没有开启的插件。为什么单独把它拿出来讲呢？因为太好用了，没有它我根本就不想用命令行。简直就是可以无脑跳跃，比如你经常进入~/Documents目录，按下 z doc 一般它就可以跳进去了(当然首先你得用一段时间让它积累一下数据才能用)。类似的插件还有好几个比如autojump,fasd，这类东西好像叫 FS Jumping，这里有个完整列表：https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins-Overview#fs-jumping
+
+======d==========
+
+在 fish shell 里你可以按alt 加左右箭头随意穿梭于历史记录中，就像 GUI 文件浏览器的
+前进，后退。zsh 没有这么好用，但是按一下 d 再回车你会看到最近的历史记录，然后你就可以通过数字比如 1, 2 之类的返回到某个历史记录中了。也是非常好用的。
+
+
+
+====================插件配置详解====================
+https://segmentfault.com/a/1190000004695131
+
+
+
+
+xx配置
+http://blog.163.com/xh_ding/blog/static/193903289201462211626537/
+
+
+zsh wiki  主题语法
+http://zshwiki.org/home/config/prompt

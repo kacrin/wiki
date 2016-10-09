@@ -43,6 +43,10 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1em;
 }
 
+h1 { color: #F5FF97}
+h2 { color: #FFBCB8}
+h3 { color: #D1EFAE}
+
 h1 { font-size: 2.0em; }
 h2 { font-size: 1.6em; border-bottom: 1px solid #ddd; padding-bottom: 5px; overflow:hidden }
 h3 { font-size: 1.4em; }

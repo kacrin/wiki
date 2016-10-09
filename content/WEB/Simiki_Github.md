@@ -14,7 +14,7 @@ date: 2016-06-06 00:00
 
 Liunx 终端下
 ```
-$ ssh-keygen -t rsa -c "youemail@example.com"
+$ ssh-keygen -t rsa -C "youemail@example.com"
 $ cd .ssh
 $ cat id_rsa.pub
 ```

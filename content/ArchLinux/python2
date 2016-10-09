@@ -1,0 +1,19 @@
+---
+title: "python"
+layout: page
+date: 2016-10-8 01:00
+---
+
+pacman -S python2
+
+python2 使用py
+
+pacman -S python2-pip
+
+pip2 使用pip
+
+pip2 install py3status
+
+
+
+

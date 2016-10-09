@@ -1,0 +1,38 @@
+---
+title: "fcitx"
+layout: page
+date: 2016-10-8 01:00
+---
+
+#Fcitx 中文输入法#
+
+```
+pacman -S fcitx-rime
+
+pacman -S  fcitx-im
+```
+
+在 ~/.xinit 中开头加入
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+```
+ 
+安装配置工具
+```
+pacman -S fcitx-configtool
+```
+
+启动配置文件
+fcitx-config-gtk3
+添加中文输入法的方法是在第一个标签，点下面的加号，然后它默认本身是勾选了之显示当前语言的输入法的（Only Show Current Language），因为一般按照默认的方法安装Archlinux的是英文语言，在这种状态下是找不到中文输入法的，一定要先取消勾选这个选项，然后才能在上面的列表中找到中文输入法（可能叫Pinyin, Libpinyin之类的）。然后添加这个才会有中文输入法。
+
+如果要手工编辑 fcitx 的配置文件，请确保系统中并没有在运行 fcitx ，否则手工编辑的配置内容可能丢失。 
+
+
+启动fcitx
+
+
+
+

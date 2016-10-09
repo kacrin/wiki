@@ -1,0 +1,154 @@
+---
+title: "i3-wm"
+layout: page
+date: 2016-10-8 01:00
+---
+
+# i3-wm #
+
+https://wiki.deepin.org/?title=I3
+https://wiki.archlinux.org/index.php/I3_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29
+
+http://i3wm.org/docs/userguide.html#_configuring_i3bar
+
+
+## i3bar-python ###
+https://github.com/ultrabug/py3status
+简单使用
+
+i3 默认修饰键是 Alt。第一次启动时，i3 会创建一个配置文件。创建过程中，可以告诉配置向导在配置文件中使用 Alt(Mod1) 还是 Winkey(Mod4)作为修饰键。同时还会配置键盘布局。
+配置文件
+
+如果您要重新配置 i3，可将原配置文件删除，再启动该配置向导，命令为 i3-config-wizard，重新配置完成后可以使用$mod+Shift+C重新载入配置文件。提示：如果已有 ~/.i3/config 配置文件，向导会退出。
+
+i3 配置文件采用纯文本格式，使用文本编辑器打开即可对 i3 进行配置，不需使用某个特定的编程语言。
+
+配置文件位置： 
+
+~/.i3/config (or ~/.config/i3/config)
+
+i3启动的时候会按以下顺序寻找配置文件：
+
+1. ~/.config/i3/config (or $XDG_CONFIG_HOME/i3/config if set)
+
+2. /etc/xdg/i3/config (or $XDG_CONFIG_DIRS/i3/config if set)
+
+3. ~/.i3/config
+
+4. /etc/i3/config
+
+你也可以使用 -c选项指定配置文件。
+终端
+
+打开终端：$mod+Enter 
+
+
+
+i3 bar配置设定
+bar{
+
+	status_command i3status
+	position bottom
+	#mode hide
+	
+	
+    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+    font pango:DejaVu Sans Mono 10
+}
+	
+	
+	
+	i3配置文档
+	http://www.cnblogs.com/vachester/p/5649813.html
+	
+i3配置 窗口颜色
+
+#窗口                     边框      #背景      字体     提示信息
+client.focused       #3333333   #333333        #ffffff  #3333333
+client.focused_inactive #999999 #999999        #ffffff  #3399ff
+client.urgent        #999999    #999999        #ffffff  #3399ff
+
+
+
+
+i3bar  配置
+
+使用python 构建的 py3status 配置  https://github.com/ultrabug/py3status
+
+配置目录~/.i3status.conf
+
+```
+order += "whoami"
+order += "sysdata"	
+order += "disk /"
+order += "disk /home"
+order += "battery_level"
+order += "wifi"
+order += "netdata"
+order += "time"
+
+disk /{
+	format = "/ %free"
+}
+
+disk /home{
+	format = "/home %free"
+}
+
+battery_level {
+	format = "{icon} {percent}%"
+	
+}
+
+wifi{
+	fromat_up = "{device} {signal_dbm}  {ssid}  {ip}"
+}
+
+wifi 中在wifi.py 里要设置 接口名称 wlp4s0
+battery_level.py 要安装apci才可以使用
+
+
+https://wiki.deepin.org/?title=I3
+
+i3配置  默认启动uxterm终端，使可以输入中文
+bindsym $mod+Return exec uxterm
+
+
+
+4.20。 重点是鼠标
+
+默认情况下,窗口焦点跟随你的鼠标移动。然而,如果你有一个设置鼠标的位置通常是在你的方式(如你的笔记本电脑的触摸板你不想完全禁用),您可能想要禁用吗 焦点 跟随鼠标 通过使用你的键盘和控制只专注。 鼠标将 仍然是有用的在当前活动窗口(例如点击 在浏览器窗口的链接)。
+
+语法 :
+
+focus_follows_mouse yes|no
+
+例子 :
+
+focus_follows_mouse no
+
+4.21
+指定一个自定义符号用于分隔符,而不是垂直的, 一个像素厚分离器。
+
+语法 :
+
+separator_symbol <symbol>
+
+例子 :
+
+bar {
+    separator_symbol ":|:"
+}
+
+矢量字体安装aur
+https://aur.archlinux.org/packages/ttf-font-awesome/
+
+矢量字体图标
+http://fontawesome.io/cheatsheet/
+http://www.bootcss.com/p/font-awesome/
+
+i3官网配置文档
+http://i3wm.org/docs/userguide.html#_configuring_i3bar
+
+vim配置
+https://jqs7.com/an-shi-yong-de-vimcha-jian/

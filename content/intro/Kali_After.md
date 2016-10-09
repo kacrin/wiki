@@ -43,6 +43,10 @@ $ tar -xzf LighttableLinux64.tar.gz
 $ cd Lighttable
 $ ./Lighttable
 ```
+### 使用更强大编辑器 ###
+
+emacs 
+vim
 
 ## Iceweasel ##
 
