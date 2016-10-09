@@ -10,7 +10,7 @@ Tags: simple, single-columns, code, codehighlight, white, markdown
 
 /* Global Configuration */
 /* IE6 ignores this and uses default size of 16pt */
-html>body { font-size: 12px; color:#ebebeb; }
+html>body { font-size: 14px; color:#ebebeb; }
 
 @font-face {
  font-family:font;
@@ -42,6 +42,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #ebebeb;
     line-height: 1em;
 }
+
+h1 { color: #F5FF97}
+h2 { color: #FFBCB8}
+h3 { color: #D1EFAE}
 
 h1 { font-size: 2.0em; }
 h2 { font-size: 1.6em; border-bottom: 1px solid #ddd; padding-bottom: 5px; overflow:hidden }

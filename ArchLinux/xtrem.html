@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!--
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+        -->
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+
+        <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <title>xterm - MANJIA_WIKI</title>
+        <meta name="keywords" content="Hack, Tools"/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/wiki/">Home</a>&nbsp;»&nbsp;<a href="/wiki/#ArchLinux">ArchLinux</a>&nbsp;»&nbsp;xterm</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">xterm</div>
+  <div id="content">
+  <h1 id="xterm">xterm</h1>
+<p>cat ~/.Xdefaults 
+vi .Xdefaults</p>
+<p>use  fc-match -all   look all font</p>
+<div class="hlcode"><pre><span class="vi">#XTerm</span><span class="o">*</span><span class="nx">font</span><span class="p">:</span> <span class="na">-misc-fixed-medium-r-normal</span><span class="o">--</span><span class="mi">20</span><span class="o">-</span><span class="mi">200</span><span class="o">-</span><span class="mi">75</span><span class="o">-</span><span class="mi">75</span><span class="na">-c</span><span class="o">-</span><span class="mi">100</span><span class="na">-iso8859</span><span class="o">-</span><span class="mi">1</span>
+<span class="nx">XTerm</span><span class="o">*</span><span class="nx">font</span><span class="p">:</span>  <span class="na">-misc-fixed-medium-r-normal</span><span class="o">--</span><span class="mi">18</span><span class="o">-</span><span class="mi">120</span><span class="o">-</span><span class="mi">100</span><span class="o">-</span><span class="mi">100</span><span class="na">-c</span><span class="o">-</span><span class="mi">90</span><span class="na">-iso10646</span><span class="o">-</span><span class="mi">1</span>
+<span class="nx">XTerm</span><span class="o">*</span><span class="nx">wideFont</span><span class="p">:</span> <span class="na">-misc-fixed-medium-r-normal</span><span class="o">-*-</span><span class="mi">18</span><span class="o">-</span><span class="mi">120</span><span class="o">-</span><span class="mi">100</span><span class="o">-</span><span class="mi">100</span><span class="na">-c</span><span class="o">-</span><span class="mi">180</span><span class="na">-iso10646</span><span class="o">-</span><span class="mi">1</span>
+<span class="nx">XTerm</span><span class="o">*</span><span class="nx">saveLines</span><span class="p">:</span> <span class="mi">4096</span>
+<span class="nx">XTerm</span><span class="o">*</span><span class="nx">scrollbar</span><span class="p">:</span> <span class="nx">yes</span>
+
+<span class="nx">xterm.geometry</span><span class="p">:</span> <span class="mi">80</span><span class="nx">x36</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">scrollBar</span><span class="p">:</span> <span class="kc">false</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">rightScrollBar</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">loginshell</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">cursorBlink</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">background</span><span class="p">:</span> <span class="nx">black</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">foreground</span><span class="p">:</span> <span class="nx">gray</span>
+<span class="nx">xterm.borderLess</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm.cursorBlink</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">colorUL</span><span class="p">:</span> <span class="nx">yellow</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">colorBD</span><span class="p">:</span> <span class="nx">white</span>
+<span class="o">!</span><span class="nx">mouse</span> <span class="nx">selecting</span> <span class="k">to</span> <span class="nx">copy</span><span class="p">,</span> <span class="nx">ctrl</span><span class="na">-v</span> <span class="k">to</span> <span class="nx">paste</span>
+<span class="o">!</span><span class="nx">Ctrl</span> <span class="nx">p</span> <span class="k">to</span> <span class="nx">print</span> <span class="nx">screen</span> <span class="nb">content</span> <span class="k">to</span> <span class="nb">file</span>
+<span class="nx">XTerm</span><span class="o">*</span><span class="nx">VT100.Translations</span><span class="p">:</span> <span class="vi">#override</span> <span class="o">/</span>
+    <span class="nx">Ctrl</span> <span class="o">&lt;</span><span class="nx">KeyPress</span><span class="o">&gt;</span> <span class="nx">V</span><span class="p">:</span> <span class="nb">insert</span><span class="na">-selection</span><span class="p">(</span><span class="nx">CLIPBOARD</span><span class="p">,</span><span class="nx">PRIMARY</span><span class="p">,</span><span class="nx">CUT_BUFFER0</span><span class="p">)</span> <span class="p">/</span><span class="nb">n</span><span class="o">/</span>
+    <span class="o">&lt;</span><span class="nx">BtnUp</span><span class="o">&gt;</span><span class="p">:</span> <span class="k">select</span><span class="na">-end</span><span class="p">(</span><span class="nx">CLIPBOARD</span><span class="p">,</span><span class="nx">PRIMARY</span><span class="p">,</span><span class="nx">CUT_BUFFER0</span><span class="p">)</span> <span class="p">/</span><span class="nb">n</span><span class="o">/</span>
+    <span class="nx">Ctrl</span> <span class="o">&lt;</span><span class="nx">KeyPress</span><span class="o">&gt;</span> <span class="nx">P</span><span class="p">:</span> <span class="nx">print</span><span class="p">()</span> <span class="p">/</span><span class="nb">n</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nb">locale</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm.utf8</span><span class="p">:</span>     <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">utf8Title</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">fontMenu</span><span class="o">*</span><span class="nx">fontdefault</span><span class="o">*</span><span class="nb">Label</span><span class="p">:</span> <span class="nb">Default</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">xftAntialias</span><span class="p">:</span> <span class="kc">true</span>
+<span class="nx">xterm</span><span class="o">*</span><span class="nx">cjkWidth</span><span class="p">:</span><span class="kc">false</span>  
+</pre></div>
+
+
+<p>my .Xdefaults</p>
+<div class="hlcode"><pre><span class="n">xterm</span><span class="o">*</span><span class="n">background</span><span class="o">:</span><span class="n">black</span>
+<span class="n">xterm</span><span class="o">*</span><span class="n">foreground</span><span class="o">:</span><span class="n">gray</span>
+
+<span class="o">!</span><span class="err">设置开启</span><span class="mi">256</span><span class="err">颜色显示，默认显示颜色代码为</span><span class="mi">8</span>
+<span class="n">xterm</span><span class="p">.</span><span class="n">termName</span><span class="o">:</span> <span class="n">xterm</span><span class="o">-</span><span class="mi">256</span><span class="n">color</span>
+
+<span class="n">xterm</span><span class="o">*</span><span class="n">font</span><span class="o">:</span><span class="mi">9</span><span class="o">*</span><span class="mi">15</span>
+</pre></div>
+
+
+<h1 id="_1">此方法无效</h1>
+<p>1、修改.bashrc文件</p>
+<p>~/.bashrc文件添加
+if [ "$TERM" == "xterm" ]; then
+export TERM=xterm-256color
+fi
+=========================</p>
+<p>重新引导配置文件
+xrdb -load ~/.Xresources</p>
+<p>显示中文，首先在local.gen下启用中文zh_CN.UTF-8
+安装中文字体，</p>
+<div class="hlcode"><pre><span class="n">xterm</span><span class="o">*</span><span class="n">faceName</span><span class="o">:</span> <span class="n">Consolas</span><span class="o">:</span> <span class="n">antialias</span><span class="o">=</span><span class="n">True</span><span class="o">:</span> <span class="n">pixelsize</span><span class="o">=</span><span class="mi">18</span>
+<span class="n">xterm</span><span class="o">*</span><span class="n">faceNameDoublesize</span><span class="o">:</span> <span class="n">Microsoft</span> <span class="n">YaHei</span><span class="o">:</span> <span class="n">antialias</span><span class="o">=</span><span class="n">True</span><span class="o">:</span> <span class="n">pixelsize</span><span class="o">=</span><span class="mi">16</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2016 NANJIA.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>
