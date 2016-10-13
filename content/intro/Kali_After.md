@@ -6,6 +6,8 @@ date: 2016-6-3 23:00
 
 # KALI #
 
+[kali 秘籍](https://wizardforcel.gitbooks.io/kali-linux-cookbook/content/ch7.html)
+
 ## 更新kali源 ##
 
 安装kali后添加源(/etc/apt/source.lst)
