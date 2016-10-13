@@ -29,6 +29,10 @@ date: 2016-6-3 23:00
 
 [RiceQuant - Github](https://github.com/ricequant/rqalpha)
 
+### ta-lib 使用方法 ###
+
+[ta-lib - Github io](http://mrjbq7.github.io/ta-lib/install.html)
+
 ## 及时股票交易系统 ##
 
 [JoinQuant 连接雪球网交易](https://www.joinquant.com/post/1662?tag=new)
