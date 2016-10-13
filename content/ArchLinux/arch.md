@@ -388,6 +388,8 @@ IgnorePkg = eclipse nvidia nvidia-utils nvidia-cg-toolkit
 ```
 之后你会发现时间慢了8小时因为我们是+8时区的，如果timedatectl设置时间那BIOS里时间就会快8小时。我后面发现只要#nano /etc/locatime 然后把最后一个CST-8改成CST-0就妥妥的了。。。
 
+## 安装网络工具 ##
 
+pacman -S net-tools dnsutils inetutils iproute2
 
 

@@ -25,6 +25,10 @@ date: 2016-6-3 23:00
 国外
 [QuantOpian](https://www.quantopian.com/)
 
+### 开源回测框架 ###
+
+[RiceQuant - Github](https://github.com/ricequant/rqalpha)
+
 ## 及时股票交易系统 ##
 
 [JoinQuant 连接雪球网交易](https://www.joinquant.com/post/1662?tag=new)
