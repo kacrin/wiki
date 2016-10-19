@@ -100,5 +100,50 @@ systemd: /usr/lib/systemd/system/autossh.service
 
 ### 加入 /etc/init.d 中 ###
 
+Debian中
+
+在/etc/init.d/下新建autossh 文件,创建如下内容
+
+格式按照skeleton 是一个默认模板
+
+```
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          autossh
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: autossh script 
+# Description:       This file should be used to construct scripts to be
+#                    placed in /etc/init.d.  This example start a
+#                    single forking daemon capable of writing a pid
+#                    file.  To get other behavoirs, implemend
+#                    do_start(), do_stop() or other functions to
+#                    override the defaults in /lib/init/init-d-script.
+### END INIT INFO
+
+/bin/su -c '/usr/bin/autossh -M 5678 -NfR 1234:localhost:22 root@woza.f3322.net -p22' - ninjia
+
+```
+
+增加执行权限
+
+```
+#chmod +x autossh
+```
+
+链接到/etc/rc2.d 
+
+```
+ln -s /etc/init.d/autossh S20autossh
+```
+
+
+
+
+
+
 
 

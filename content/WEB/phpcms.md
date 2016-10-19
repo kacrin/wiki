@@ -124,7 +124,7 @@ pc 标签调用获取内容模块内容
     jQuery(".loopdiv").slide({mainCell:".bd ul",autoPage:true,effect:"leftLoop",autoPlay:true,vis:5,delayTime:700});
 </script>
 
-'''
+```
 
 调用特效要先定义总的div,然后定义到div 下 .bd ul 下, 会特效显示<li>标签下内容
 总div下 .hd 下是 调用下一个<li>标签样式 class下加 prev 是上一个, next 是下一个
