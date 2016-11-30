@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!--
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+        -->
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+
+        <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <title>Ssh Reverse Connect - MANJIA_WIKI</title>
+        <meta name="keywords" content="Hack, Tools"/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/wiki/">Home</a>&nbsp;»&nbsp;<a href="/wiki/#Linux">Linux</a>&nbsp;»&nbsp;Ssh Reverse Connect</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">Ssh Reverse Connect</div>
+  <div id="content">
+  <h1 id="ssh">ssh 突破内网反向连接</h1>
+<h2 id="_1">申请二级域名</h2>
+<p>原3322动态域名网站
+<a href="http://www.pubyun.com">pubyun公云</a></p>
+<h2 id="_2">服务器设置</h2>
+<p>服务器</p>
+<div class="hlcode"><pre><span class="n">ip</span><span class="o">:</span> <span class="mf">111.112</span><span class="o">.</span><span class="mf">111.112</span>
+<span class="n">port</span><span class="o">:</span> <span class="mi">22</span>
+<span class="n">dns</span><span class="o">:</span><span class="n">xxx</span><span class="o">.</span><span class="na">f3322</span><span class="o">.</span><span class="na">net</span>
+</pre></div>
+
+
+<p>查看路由器外网ip,绑定到 公云 申请域名,路由器设置端口映射,22端口 -&gt; 192.168.0.100 22端口
+服务器开启sshd服务,设置允许远程登录</p>
+<h2 id="_3">内网主机设置</h2>
+<p>内网主机</p>
+<div class="hlcode"><pre><span class="n">ip</span><span class="o">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.100</span>
+<span class="n">port</span><span class="o">:</span><span class="mi">2233</span>
+</pre></div>
+
+
+<p>首先测试能否直接连接到服务器</p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">ssh</span> <span class="n">root</span><span class="err">@</span><span class="n">xxx</span><span class="p">.</span><span class="n">f3322</span><span class="p">.</span><span class="n">net</span> <span class="o">-</span><span class="n">p22</span> 
+</pre></div>
+
+
+<p>测试成功,再测试远程端口映射</p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">ssh</span> <span class="o">-</span><span class="n">NfR</span> <span class="mi">1234</span><span class="o">:</span><span class="n">localhost</span><span class="o">:</span><span class="mi">2233</span> <span class="n">root</span><span class="err">@</span><span class="n">xxx</span><span class="p">.</span><span class="n">f3322</span><span class="p">.</span><span class="n">net</span> <span class="o">-</span><span class="n">p22</span>
+</pre></div>
+
+
+<p>上一句命令,把本地2233端口绑定到服务器1234端口,使用域名会被解析成服务器外网ip
+再被映射到内网</p>
+<p>使用autossh连接,在连接各种原因断开后,自动重连 </p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">autossh</span>
+<span class="err">$</span><span class="n">autossh</span> <span class="o">-</span><span class="n">M</span> <span class="mi">5678</span> <span class="o">-</span><span class="n">NfR</span> <span class="mi">1234</span><span class="o">:</span><span class="n">localhost</span><span class="o">:</span><span class="mi">2233</span> <span class="n">root</span><span class="err">@</span><span class="n">xxx</span><span class="p">.</span><span class="n">f3322</span><span class="p">.</span><span class="n">net</span> <span class="o">-</span><span class="n">p</span> <span class="mi">22</span>
+</pre></div>
+
+
+<p>使用-f命令会在后台运行,后台运行命令后无法输入密码</p>
+<p>使用autossh不会每次使用密码,可以使用ssh密钥登陆方式,实现自动登陆</p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span>
+</pre></div>
+
+
+<p>过程按需求输入密码,一般略过
+最后在~/.ssh/下生成密钥</p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">ls</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span>
+<span class="n">id_rsa</span> <span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span>
+</pre></div>
+
+
+<h2 id="_4">复制密钥到服务器上</h2>
+<div class="hlcode"><pre><span class="err">$</span> <span class="n">cat</span> <span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="o">&gt;&gt;</span> <span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+</pre></div>
+
+
+<p>使用ssh-copy-id这个命令 过程更简单</p>
+<div class="hlcode"><pre><span class="err">$</span><span class="n">ssh</span><span class="o">-</span><span class="n">copy</span><span class="o">-</span><span class="n">id</span> <span class="n">root</span><span class="err">@</span><span class="n">xxx</span><span class="p">.</span><span class="n">f3322</span><span class="p">.</span><span class="n">net</span>
+</pre></div>
+
+
+<h2 id="_5">终极方案</h2>
+<p>在内网机器重启时,无法启动autossh,加入daemon</p>
+<p>以daemon方式执行，相当于root去执行autossh, ssh，这时刚才普通用户目录下的.ssh/authorized_keys文件会不起效。有两种办法解决，一种是用autossh的参数指定.ssh路径；另外一种是以普通用户身份执行daemon，下面是第二种方式。</p>
+<div class="hlcode"><pre><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">su</span> <span class="o">-</span><span class="n">c</span> <span class="err">&#39;</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">autossh</span> <span class="o">-</span><span class="n">M</span> <span class="mi">5678</span> <span class="o">-</span><span class="n">NfR</span> <span class="mi">1234</span><span class="o">:</span><span class="n">localhost</span><span class="o">:</span><span class="mi">2233</span> <span class="n">root</span><span class="err">@</span><span class="n">xxx</span><span class="p">.</span><span class="n">f3322</span><span class="p">.</span><span class="n">net</span> <span class="o">-</span><span class="n">p22</span><span class="err">&#39;</span> <span class="o">-</span> <span class="n">user1</span>
+</pre></div>
+
+
+<p>autossh还有很多参数，用来设置重连间隔等等。</p>
+<p>将上面命令放入下面各启动方式中，根据自己系统自己配置：</p>
+<div class="hlcode"><pre><span class="n">SysV</span><span class="err">：</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">inid</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">autossh</span>
+<span class="nl">Upstart:</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">autossh</span><span class="p">.</span><span class="n">conf</span>
+<span class="nl">systemd:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">autossh</span><span class="p">.</span><span class="n">service</span>
+</pre></div>
+
+
+<h3 id="etcinitd">加入 /etc/init.d 中</h3>
+<p>Debian中</p>
+<p>在/etc/init.d/下新建autossh 文件,创建如下内容</p>
+<p>格式按照skeleton 是一个默认模板</p>
+<table class="hlcodetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="hlcode"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c">### BEGIN INIT INFO</span>
+<span class="c"># Provides:          autossh</span>
+<span class="c"># Required-Start:    $remote_fs $syslog</span>
+<span class="c"># Required-Stop:     $remote_fs $syslog</span>
+<span class="c"># Default-Start:     2 3 4 5</span>
+<span class="c"># Default-Stop:      0 1 6</span>
+<span class="c"># Short-Description: autossh script </span>
+<span class="c"># Description:       This file should be used to construct scripts to be</span>
+<span class="c">#                    placed in /etc/init.d.  This example start a</span>
+<span class="c">#                    single forking daemon capable of writing a pid</span>
+<span class="c">#                    file.  To get other behavoirs, implemend</span>
+<span class="c">#                    do_start(), do_stop() or other functions to</span>
+<span class="c">#                    override the defaults in /lib/init/init-d-script.</span>
+<span class="c">### END INIT INFO</span>
+
+/bin/su -c <span class="s1">&#39;/usr/bin/autossh -M 5678 -NfR 1234:localhost:22 root@woza.f3322.net -p22&#39;</span> - ninjia
+</pre></div>
+</td></tr></table>
+
+<p>增加执行权限</p>
+<div class="hlcode"><pre><span class="c">#chmod +x autossh</span>
+</pre></div>
+
+
+<p>链接到/etc/rc2.d </p>
+<div class="hlcode"><pre><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="n">autossh</span> <span class="n">S20autossh</span>
+</pre></div>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2016 NANJIA.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>

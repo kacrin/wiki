@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!--
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+        -->
+        <link rel="Stylesheet" type="text/css" href="../static/css/style.css">
+        <link rel="Stylesheet" type="text/css" href="../static/css/tango.css">
+
+        <link rel="shortcut icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/wiki/favicon.ico" type="image/x-icon">
+        <title>Centos Sever - MANJIA_WIKI</title>
+        <meta name="keywords" content="Hack, Tools"/>
+        <meta name="description" content=""/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+        <div id="container">
+            
+<div id="header">
+  <div id="post-nav"><a href="/wiki/">Home</a>&nbsp;»&nbsp;<a href="/wiki/#Linux">Linux</a>&nbsp;»&nbsp;Centos Sever</div>
+</div>
+<div class="clearfix"></div>
+<div id="title">Centos Sever</div>
+  <div id="content">
+  <h1 id="gitlab">gitlab</h1>
+<h2 id="_1">搭建教程</h2>
+<p><a href="https://bbs.gitlab.cc/topic/39/%E5%9C%A8-centos-7-%E4%B8%8A%E4%BD%BF%E7%94%A8-docker-%E9%83%A8%E7%BD%B2%E5%AE%89%E8%A3%85-gitlab/2">gitlab中文网-Centos docker gitlab</a></p>
+<div class="hlcode"><pre><span class="n">centos7</span>  <span class="n">ip</span> <span class="o">:</span> <span class="mf">139.</span><span class="o">**</span><span class="p">.</span><span class="o">**</span><span class="mf">.198</span>   <span class="n">name</span><span class="o">:</span><span class="n">root</span>   <span class="n">passwod</span><span class="o">:</span> <span class="o">???</span>
+</pre></div>
+
+
+<p>此命令会指向docker80端口到外部80端口  保存文件及配置文件到/data/gitlab/目录</p>
+<div class="hlcode"><pre><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">hostname</span> <span class="n">git</span><span class="p">.</span><span class="n">taxkiz</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">80</span><span class="o">:</span><span class="mi">80</span> <span class="o">--</span><span class="n">name</span> <span class="n">gitlab</span><span class="o">-</span><span class="mf">8.0.5</span> <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">config</span><span class="o">:/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">logs</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">data</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gitlab</span> <span class="n">gitlab</span><span class="o">/</span><span class="n">gitlab</span><span class="o">-</span><span class="n">ce</span><span class="o">:</span><span class="mf">8.0.5</span><span class="o">-</span><span class="n">ce</span><span class="mf">.0</span>
+</pre></div>
+
+
+<h2 id="_2">默认用户名密码</h2>
+<p>用户: root
+密码: 5iveL!fe</p>
+<p>设置容器80端口哦映射外部端口88</p>
+<div class="hlcode"><pre><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">hostname</span> <span class="n">git</span><span class="p">.</span><span class="n">taxkiz</span><span class="p">.</span><span class="n">com</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">88</span><span class="o">:</span><span class="mi">80</span> <span class="o">--</span><span class="n">name</span> <span class="n">gitlab</span><span class="o">-</span><span class="mf">8.0.5</span> <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">config</span><span class="o">:/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">logs</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">data</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gitlab</span> <span class="n">gitlab</span><span class="o">/</span><span class="n">gitlab</span><span class="o">-</span><span class="n">ce</span><span class="o">:</span><span class="mf">8.0.5</span><span class="o">-</span><span class="n">ce</span><span class="mf">.0</span>
+</pre></div>
+
+
+<p>git传输会使用22端口，docker中没有映射外部22端口，无法push/pull，ssh连接也会使用22连接端口，首先修改外部ssh连接端口，再把22端口映射到docker容器中</p>
+<div class="hlcode"><pre><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">detach</span> <span class="o">--</span><span class="n">hostname</span> <span class="mf">139.224.27.198</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">88</span><span class="o">:</span><span class="mi">80</span> <span class="o">--</span><span class="n">publish</span> <span class="mi">22</span><span class="o">:</span><span class="mi">22</span> <span class="o">--</span><span class="n">name</span> <span class="n">gitlab</span><span class="o">-</span><span class="mf">8.0.5</span><span class="n">_88_ip_ssh22</span> <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">config</span><span class="o">:/</span><span class="n">etc</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">logs</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">gitlab</span> <span class="o">--</span><span class="n">volume</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">gitlab</span><span class="o">/</span><span class="n">data</span><span class="o">:/</span><span class="n">var</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gitlab</span> <span class="n">gitlab</span><span class="o">/</span><span class="n">gitlab</span><span class="o">-</span><span class="n">ce</span><span class="o">:</span><span class="mf">8.0.5</span><span class="o">-</span><span class="n">ce</span><span class="mf">.0</span>
+</pre></div>
+
+
+<h2 id="docker">docker</h2>
+<p><a href="http://wiki.jikexueyuan.com/list/docker/">docker</a></p>
+<h1 id="_3">环境搭建</h1>
+<div class="hlcode"><pre><span class="n">Linux</span><span class="o">:</span> <span class="n">centos7</span>
+<span class="n">Apache</span><span class="o">:</span>  <span class="n">httpd</span><span class="o">-</span><span class="mf">2.4</span><span class="o">.</span><span class="mi">18</span>
+<span class="n">PHP</span><span class="o">:</span>  <span class="n">php</span><span class="o">-</span><span class="mf">5.6</span><span class="o">.</span><span class="mi">25</span>
+<span class="n">MySQL</span><span class="o">:</span> <span class="n">mysql</span><span class="o">-</span><span class="mf">5.6</span><span class="o">.</span><span class="mi">33</span>
+<span class="n">Memcached</span><span class="o">:</span> <span class="n">memcached</span><span class="o">-</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">31</span>
+<span class="n">SVN</span><span class="o">:</span> <span class="n">Subversion</span><span class="o">-</span><span class="mf">1.7</span><span class="o">.</span><span class="mi">14</span>
+<span class="n">FTP</span><span class="o">:</span> <span class="n">vsftpd</span><span class="o">-</span><span class="mf">3.0</span><span class="o">.</span><span class="mi">2</span>
+</pre></div>
+
+
+<h2 id="lamp">lamp 架构</h2>
+<p><a href="https://www.howtoforge.com/apache_php_mysql_on_centos_7_lamp">centos 搭建lamp架构</a>
+<a href="http://www.jb51.net/os/188488.html">centos 搭建lamp架构2</a></p>
+<p>mysql 安装 </p>
+<div class="hlcode"><pre><span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">mysql</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+
+
+<p>mysql启动</p>
+<div class="hlcode"><pre><span class="n">systemctl</span> <span class="n">start</span> <span class="n">mariadb</span>  <span class="err">#启动</span><span class="n">MariaDB</span>
+<span class="n">systemctl</span> <span class="n">stop</span> <span class="n">mariadb</span>  <span class="err">#停止</span><span class="n">MariaDB</span>
+<span class="n">systemctl</span> <span class="n">restart</span> <span class="n">mariadb</span>  <span class="err">#重启</span><span class="n">MariaDB</span>
+<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">mariadb</span>  <span class="err">#设置开机启动</span>
+</pre></div>
+
+
+<p>数据库出错，忘掉密码 ，删除再按安装</p>
+<div class="hlcode"><pre><span class="n">yum</span> <span class="n">remove</span> <span class="n">mysql</span> <span class="n">mysql</span><span class="o">-</span><span class="n">server</span> <span class="n">mysql</span><span class="o">-</span><span class="n">libs</span> <span class="n">compat</span><span class="o">-</span><span class="n">mysql51</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span>
+<span class="n">rm</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">my</span><span class="p">.</span><span class="n">cnf</span>
+<span class="err">查看是否还有</span><span class="n">mysql</span><span class="err">软件</span>
+<span class="n">rpm</span> <span class="o">-</span><span class="n">qa</span><span class="o">|</span><span class="n">grep</span> <span class="n">mysql</span>
+<span class="err">有的话继续删除</span>
+</pre></div>
+
+
+<p>设置sql密码</p>
+<div class="hlcode"><pre><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> 
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">use</span> <span class="n">mysql</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">SET</span> <span class="n">PASSWORD</span> <span class="n">FOR</span> <span class="err">&#39;</span><span class="n">root</span><span class="sc">&#39;@&#39;</span><span class="n">localhost</span><span class="err">&#39;</span> <span class="o">=</span> <span class="n">PASSWORD</span><span class="p">(</span><span class="err">&#39;</span><span class="n">newpwd</span><span class="err">&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<h2 id="vsftpd">vsftpd</h2>
+<p>安装及配置</p>
+<p><a href="http://www.cnblogs.com/hhuai/archive/2011/02/12/1952647.html">最好的vsftpd配置</a></p>
+<div class="hlcode"><pre><span class="cp"># Allow anonymous FTP? (Beware - allowed by default if you comment this out).</span>
+<span class="cp">#anonymous_enable=YES</span>
+<span class="n">anonymous_enable</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">设定不允许匿名访问</span>
+<span class="cp">#</span>
+<span class="cp"># Uncomment this to allow local users to log in.</span>
+<span class="n">local_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定本地用户可以访问。注意：主要是为虚拟宿主用户，如果该项目设定为</span><span class="n">NO</span><span class="err">那么所有虚拟用户将无法访问。</span>
+<span class="cp">#</span>
+<span class="cp"># Uncomment this to enable any form of FTP write command.</span>
+<span class="n">write_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定可以进行写操作。</span>
+<span class="cp">#</span>
+<span class="cp"># Default umask for local users is 077. You may wish to change this to 022,</span>
+<span class="cp"># if your users expect that (022 is used by most other ftpd&#39;s)</span>
+<span class="n">local_umask</span><span class="o">=</span><span class="mo">022</span>
+<span class="err">设定上传后文件的权限掩码。</span>
+<span class="cp">#</span>
+<span class="cp"># Uncomment this to allow the anonymous FTP user to upload files. This only</span>
+<span class="cp"># has an effect if the above global write enable is activated. Also, you will</span>
+<span class="cp"># obviously need to create a directory writable by the FTP user.</span>
+<span class="cp">#anon_upload_enable=YES</span>
+<span class="n">anon_upload_enable</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">禁止匿名用户上传。</span>
+<span class="cp">#</span>
+<span class="cp"># Uncomment this if you want the anonymous FTP user to be able to create</span>
+<span class="cp"># new directories.</span>
+<span class="cp">#anon_mkdir_write_enable=YES</span>
+<span class="n">anon_mkdir_write_enable</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">禁止匿名用户建立目录。</span>
+<span class="cp">#</span>
+<span class="cp"># Activate directory messages - messages given to remote users when they</span>
+<span class="cp"># go into a certain directory.</span>
+<span class="n">dirmessage_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定开启目录标语功能。</span>
+<span class="cp">#</span>
+<span class="cp"># Activate logging of uploads/downloads.</span>
+<span class="n">xferlog_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定开启日志记录功能。</span>
+<span class="cp">#</span>
+<span class="cp"># Make sure PORT transfer connections originate from port 20 (ftp-data).</span>
+<span class="n">connect_from_port_20</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定端口</span><span class="mi">20</span><span class="err">进行数据连接。</span>
+<span class="cp">#</span>
+<span class="cp"># If you want, you can arrange for uploaded anonymous files to be owned by</span>
+<span class="cp"># a different user. Note! Using &quot;root&quot; for uploaded files is not</span>
+<span class="cp"># recommended!</span>
+<span class="cp">#chown_uploads=YES</span>
+<span class="n">chown_uploads</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">设定禁止上传文件更改宿主。</span>
+<span class="cp">#chown_username=whoever</span>
+<span class="cp">#</span>
+<span class="cp"># You may override where the log file goes if you like. The default is shown</span>
+<span class="cp"># below.</span>
+<span class="n">xferlog_file</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">vsftpd</span><span class="p">.</span><span class="n">log</span>
+<span class="err">设定</span><span class="n">Vsftpd</span><span class="err">的服务日志保存路径。注意，该文件默认不存在。必须要手动</span><span class="n">touch</span><span class="err">出来，并且由于这里更改了</span><span class="n">Vsftpd</span><span class="err">的服务宿主用户为手动建立的</span><span class="n">Vsftpd</span><span class="err">。必须注意给与该用户对日志的写入权限，否则服务将启动失败。</span>
+<span class="cp">#</span>
+<span class="cp"># If you want, you can have your log file in standard ftpd xferlog format</span>
+<span class="n">xferlog_std_format</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定日志使用标准的记录格式。</span>
+<span class="cp">#</span>
+<span class="cp"># You may change the default value for timing out an idle session.</span>
+<span class="cp">#idle_session_timeout=600</span>
+<span class="err">设定空闲连接超时时间，这里使用默认。将具体数值留给每个具体用户具体指定，当然如果不指定的话，还是使用这里的默认值</span><span class="mi">600</span><span class="err">，单位秒。</span>
+<span class="cp">#</span>
+<span class="cp"># You may change the default value for timing out a data connection.</span>
+<span class="cp">#data_connection_timeout=120</span>
+<span class="err">设定单次最大连续传输时间，这里使用默认。将具体数值留给每个具体用户具体指定，当然如果不指定的话，还是使用这里的默认值</span><span class="mi">120</span><span class="err">，单位秒。</span>
+<span class="cp">#</span>
+<span class="cp"># It is recommended that you define on your system a unique user which the</span>
+<span class="cp"># ftp server can use as a totally isolated and unprivileged user.</span>
+<span class="cp">#nopriv_user=ftpsecure</span>
+<span class="n">nopriv_user</span><span class="o">=</span><span class="n">vsftpd</span>
+<span class="err">设定支撑</span><span class="n">Vsftpd</span><span class="err">服务的宿主用户为手动建立的</span><span class="n">Vsftpd</span><span class="err">用户。注意，一旦做出更改宿主用户后，必须注意一起与该服务相关的读写文件的读写赋权问题。比如日志文件就必须给与该用户写入权限等。</span>
+<span class="cp">#</span>
+<span class="cp"># Enable this and the server will recognise asynchronous ABOR requests. Not</span>
+<span class="cp"># recommended for security (the code is non-trivial). Not enabling it,</span>
+<span class="cp"># however, may confuse older FTP clients.</span>
+<span class="n">async_abor_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定支持异步传输功能。</span>
+<span class="cp">#</span>
+<span class="cp"># By default the server will pretend to allow ASCII mode but in fact ignore</span>
+<span class="cp"># the request. Turn on the below options to have the server actually do ASCII</span>
+<span class="cp"># mangling on files when in ASCII mode.</span>
+<span class="cp"># Beware that on some FTP servers, ASCII support allows a denial of service</span>
+<span class="cp"># attack (DoS) via the command &quot;SIZE /big/file&quot; in ASCII mode. vsftpd</span>
+<span class="cp"># predicted this attack and has always been safe, reporting the size of the</span>
+<span class="cp"># raw file.</span>
+<span class="cp"># ASCII mangling is a horrible feature of the protocol.</span>
+<span class="n">ascii_upload_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="n">ascii_download_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定支持</span><span class="n">ASCII</span><span class="err">模式的上传和下载功能。</span>
+<span class="cp">#</span>
+<span class="cp"># You may fully customise the login banner string:</span>
+<span class="n">ftpd_banner</span><span class="o">=</span><span class="n">This</span> <span class="n">Vsftp</span> <span class="n">server</span> <span class="n">supports</span> <span class="n">virtual</span> <span class="n">users</span> <span class="o">^</span><span class="n">_</span><span class="o">^</span>
+<span class="err">设定</span><span class="n">Vsftpd</span><span class="err">的登陆标语。</span>
+<span class="cp">#</span>
+<span class="cp"># You may specify a file of disallowed anonymous e-mail addresses. Apparently</span>
+<span class="cp"># useful for combatting certain DoS attacks.</span>
+<span class="cp">#deny_email_enable=YES</span>
+<span class="cp"># (default follows)</span>
+<span class="cp">#banned_email_file=/etc/vsftpd/banned_emails</span>
+<span class="cp">#</span>
+<span class="cp"># You may specify an explicit list of local users to chroot() to their home</span>
+<span class="cp"># directory. If chroot_local_user is YES, then this list becomes a list of</span>
+<span class="cp"># users to NOT chroot().</span>
+<span class="cp">#chroot_list_enable=YES</span>
+<span class="n">chroot_list_enable</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">禁止用户登出自己的</span><span class="n">FTP</span><span class="err">主目录。</span>
+<span class="cp"># (default follows)</span>
+<span class="cp">#chroot_list_file=/etc/vsftpd/chroot_list</span>
+<span class="cp">#</span>
+<span class="cp"># You may activate the &quot;-R&quot; option to the builtin ls. This is disabled by</span>
+<span class="cp"># default to avoid remote users being able to cause excessive I/O on large</span>
+<span class="cp"># sites. However, some broken FTP clients such as &quot;ncftp&quot; and &quot;mirror&quot; assume</span>
+<span class="cp"># the presence of the &quot;-R&quot; option, so there is a strong case for enabling it.</span>
+<span class="cp">#ls_recurse_enable=YES</span>
+<span class="n">ls_recurse_enable</span><span class="o">=</span><span class="n">NO</span>
+<span class="err">禁止用户登陆</span><span class="n">FTP</span><span class="err">后使用</span><span class="s">&quot;ls -R&quot;</span><span class="err">的命令。该命令会对服务器性能造成巨大开销。如果该项被允许，那么挡多用户同时使用该命令时将会对该服务器造成威胁。</span>
+<span class="cp"># When &quot;listen&quot; directive is enabled, vsftpd runs in standalone mode and</span>
+<span class="cp"># listens on IPv4 sockets. This directive cannot be used in conjunction</span>
+<span class="cp"># with the listen_ipv6 directive.</span>
+<span class="n">listen</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定该</span><span class="n">Vsftpd</span><span class="err">服务工作在</span><span class="n">StandAlone</span><span class="err">模式下。顺便展开说明一下，所谓</span><span class="n">StandAlone</span><span class="err">模式就是该服务拥有自己的守护进程支持，在</span><span class="n">ps</span> <span class="o">-</span><span class="n">A</span><span class="err">命令下我们将可用看到</span><span class="n">vsftpd</span><span class="err">的守护进程名。如果不想工作在</span><span class="n">StandAlone</span><span class="err">模式下，则可以选择</span><span class="n">SuperDaemon</span><span class="err">模式，在该模式下</span> <span class="n">vsftpd</span><span class="err">将没有自己的守护进程，而是由超级守护进程</span><span class="n">Xinetd</span><span class="err">全权代理，与此同时，</span><span class="n">Vsftp</span><span class="err">服务的许多功能将得不到实现。</span>
+<span class="cp">#</span>
+<span class="cp"># This directive enables listening on IPv6 sockets. To listen on IPv4 and IPv6</span>
+<span class="cp"># sockets, you must run two copies of vsftpd whith two configuration files.</span>
+<span class="cp"># Make sure, that one of the listen options is commented !!</span>
+<span class="cp">#listen_ipv6=YESpam_service_name=vsftpd</span>
+<span class="err">设定</span><span class="n">PAM</span><span class="err">服务下</span><span class="n">Vsftpd</span><span class="err">的验证配置文件名。因此，</span><span class="n">PAM</span><span class="err">验证将参考</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">pam</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="err">下的</span><span class="n">vsftpd</span><span class="err">文件配置。</span>
+<span class="n">userlist_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定</span><span class="n">userlist_file</span><span class="err">中的用户将不得使用</span><span class="n">FTP</span><span class="err">。</span>
+<span class="n">tcp_wrappers</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定支持</span><span class="n">TCP</span> <span class="n">Wrappers</span><span class="err">。#</span><span class="n">KC</span><span class="o">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">entries</span> <span class="n">are</span> <span class="n">added</span> <span class="k">for</span> <span class="n">supporting</span> <span class="n">virtual</span> <span class="n">ftp</span> <span class="n">users</span><span class="p">.</span>
+<span class="err">以下这些是关于</span><span class="n">Vsftpd</span><span class="err">虚拟用户支持的重要配置项目。默认</span><span class="n">Vsftpd</span><span class="p">.</span><span class="n">conf</span><span class="err">中不包含这些设定项目，需要自己手动添加配置。</span><span class="n">guest_enable</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定启用虚拟用户功能。</span>
+<span class="n">guest_username</span><span class="o">=</span><span class="n">overlord</span>
+<span class="err">指定虚拟用户的宿主用户。</span>
+<span class="n">virtual_use_local_privs</span><span class="o">=</span><span class="n">YES</span>
+<span class="err">设定虚拟用户的权限符合他们的宿主用户。</span>
+<span class="n">user_config_dir</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">vsftpd</span><span class="o">/</span><span class="n">vconf</span>
+<span class="err">设定虚拟用户个人</span><span class="n">Vsftp</span><span class="err">的配置文件存放路径。也就是说，这个被指定的目录里，将存放每个</span><span class="n">Vsftp</span><span class="err">虚拟用户个性的配置文件，一个需要注意的地方就是这些配置文件名必须和虚拟用户名相同。</span>
+</pre></div>
+
+
+<p>虚拟用户没有实现，使用vsftpd登陆</p>
+<p>使用vsftpd账号登陆vsftpd
+设置vsftpd密码</p>
+<div class="hlcode"><pre><span class="c"># useradd vsftpd -s /sbin/nologin</span>
+<span class="c"># passwd vsftpd</span>
+</pre></div>
+
+
+<h2 id="phpmyadmin">phpmyadmin</h2>
+<p><a href="https://linux.cn/article-4526-1.html">phpmyadmin安装配置</a></p>
+<p>centos6,7中配置方法不同</p>
+<p>centos7 中安装 配置外网访问，默认外网不可访问</p>
+<div class="hlcode"><pre><span class="c"># yum -y install phpmyadmin php-mcrypt</span>
+<span class="c"># vi /etc/httpd/conf.d/phpMyAdmin.conf</span>
+</pre></div>
+
+
+<p>找出并注释掉带有"Require ip xxx" 字样代码行，用"Require all granted" 代之</p>
+<div class="hlcode"><pre><span class="nt">&lt;Directory</span> <span class="err">/usr/share/phpMyAdmin</span><span class="nt">/&gt;</span>
+   AddDefaultCharset UTF-8
+
+   <span class="nt">&lt;IfModule</span> <span class="err">mod_authz_core.c</span><span class="nt">&gt;</span>
+     # Apache 2.4
+     <span class="nt">&lt;RequireAny&gt;</span>
+       #Require ip 127.0.0.1
+       #Require ip ::1
+       Require all granted
+     <span class="nt">&lt;/RequireAny&gt;</span>
+   <span class="nt">&lt;/IfModule&gt;</span>
+   <span class="nt">&lt;IfModule</span> <span class="err">!mod_authz_core.c</span><span class="nt">&gt;</span>
+     # Apache 2.2
+     Order Deny,Allow
+     Deny from All
+     Allow from 127.0.0.1
+     Allow from ::1
+   <span class="nt">&lt;/IfModule&gt;</span>
+<span class="nt">&lt;/Directory&gt;</span>
+
+<span class="nt">&lt;Directory</span> <span class="err">/usr/share/phpMyAdmin/setup</span><span class="nt">/&gt;</span>
+   <span class="nt">&lt;IfModule</span> <span class="err">mod_authz_core.c</span><span class="nt">&gt;</span>
+     # Apache 2.4
+     <span class="nt">&lt;RequireAny&gt;</span>
+       #Require ip 127.0.0.1
+       #Require ip ::1
+       Require all granted
+     <span class="nt">&lt;/RequireAny&gt;</span>
+   <span class="nt">&lt;/IfModule&gt;</span>
+   <span class="nt">&lt;IfModule</span> <span class="err">!mod_authz_core.c</span><span class="nt">&gt;</span>
+     # Apache 2.2
+     Order Deny,Allow
+     Deny from All
+     Allow from 127.0.0.1
+     Allow from ::1
+   <span class="nt">&lt;/IfModule&gt;</span>
+<span class="nt">&lt;/Directory&gt;</span>
+</pre></div>
+
+
+<p>重启使之生效</p>
+<div class="hlcode"><pre><span class="c"># systemctl restart httpd</span>
+</pre></div>
+
+
+<p>centos 6 中配置，查看网址中centos6中配置</p>
+</div>
+
+        </div>
+        <div id="footer">
+            <span>
+                Copyright © 2016 NANJIA.
+                Powered by <a href="http://simiki.org/" target="_blank">Simiki</a>.
+            </span>
+        </div>
+        
+    </body>
+</html>
