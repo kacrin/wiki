@@ -317,3 +317,18 @@ centos7 中安装 配置外网访问，默认外网不可访问
 ```
 
 centos 6 中配置，查看网址中centos6中配置
+
+# git 实现完美钩子
+
+使用gitlab完美实现？
+
+使用git工具直接实现git远程仓库,写钩子，每次提交完成后，强制检查不同哦你并更新到/www/pms 目录
+```
+git init --base pms.git
+cd pms.git/hooks
+vi post-receive
+
+#!/bin/bash
+git --work-tree=/www/pms checkout -f
+
+```
