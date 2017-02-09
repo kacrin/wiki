@@ -1,0 +1,1009 @@
+---
+title: "CentosSever"
+layout: page
+date: 2017-02-09 23:00
+---
+
+# Centos Sever
+
+```
+cd
+ls
+cd soft
+ls
+wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz
+ls
+tar -zxvf libmemcached-1.0.18.tar.gz 
+cd libmemcached-1.0.18/
+ls
+./configure -prefix=/usr/local/libmemcached -with-memcached
+make 
+make install
+ls
+ll
+cd ../
+ls
+cd memcached-2.2.0/
+lks
+ls
+/usr/local/php7/bin/phpize 
+./configure --with-php-config=/usr/local/php7/bin/php-config -enable-memcached --disable-memcached-sasl -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached
+yum install zlib-devel
+make
+make install
+ls  /usr/local/php7/lib/php/extensions/no-debug-zts-20151012/
+/usr/local/apache2/bin/apachectl -k restart
+/usr/local/php7/bin/php -m
+ps auxf
+exit
+ls
+cd /usr/local/
+cd apache2/
+ls
+cd conf/
+ls
+cd extra/
+ls
+cat httpd-vhosts.conf 
+cd /gitwork/phpmyadmin.git/
+ls
+cd hooks/
+ls
+ll
+vi post-receive
+ll
+chmod +x post-receive 
+ll
+chown git:git post-receive 
+ll
+chmod +x post-receive
+ll
+cd ../
+ls
+git init --bare pms.git
+ll
+cd pms.git/
+ls
+cd hooks/
+ls
+cd pwd
+pwd
+vi post-receive 
+chmod +x post-receive
+ll
+cat post-receive 
+ll
+pwd
+cd 
+cd /usr/local/
+cd apache2/
+ls
+cd conf/
+ls
+cd extra/
+ls
+vim httpd-vhosts.conf 
+ls
+/usr/local/apache2/bin/apachectl -k restart
+ll
+ps auxf|grep mysql
+clear
+ls
+ll
+ls
+cd
+ps auxf
+whereis git
+cd /
+ll
+cd gitwork/
+ll
+cd phpmyadmin.git/
+ll
+cd hooks/
+ll
+cd /
+ll
+whereis nginx
+ps aux|grep my
+cd /etc/rc.d/
+ll
+cat rc.local 
+cd /var/lock/subsys/local
+ll /var/lock/subsys/local
+cd /var/lock/subsys/
+ll
+chkconfig -list
+chkconfig --list
+ll
+cd /etc/rc.d/init.d/
+ll
+ps aux|grep ng
+ps aux|grep ap
+cd /usr/local/
+ll
+cd apache2/
+ll
+cd conf
+ll
+cd extra/
+ll
+cat httpd-vhosts.conf 
+cd ~/.ssh
+cd /
+cd ~/.ssh
+cd ~
+ll
+ll -a
+su git
+cd www
+cd /www
+ll
+cd pms/
+ll
+ll -l
+ll -a
+cd .flow
+ll
+cat VERSION 
+cd ..
+ll
+cd ..
+ll
+cd var
+ll
+cd ..
+ll
+ps aux|grep git
+cd gitwork
+ll
+cd pms.git/
+ll
+cd config
+ll
+cat config 
+ll
+cd ..
+ll
+ ls /etc/rc.d
+cd init.d
+ll
+cd /etc/rc.d/init.d
+ll
+cd ..
+ll
+cd rc0.d
+ll
+cd ..
+ll
+cd rc1.d/
+ll
+cd ..
+ll
+chkconfig --list
+mysql
+mysql -u root
+mysql -u root -p
+ls
+ll
+ps auxf
+ls
+cd /gitwork/
+ls
+cd /www
+ls
+cd pms
+ll
+pwd
+ls
+cd /gitwork/
+ls
+cd pms.git/
+ls
+cd hooks/
+ls
+cat post-receive 
+cd /www/pms
+ll
+ls -al
+cd www
+ls -al
+ls
+cd /gitwork/
+ls
+git init --bare ruanronshop.git
+ll
+chown -R git:git ruanronshop.git/
+lll
+ll
+cd /www
+ls
+mkdir ruanronshop
+ll
+chown -R git:git ruanronshop/
+ll
+cd /usr/local/apache2/
+cd conf/
+cd extra/
+ls
+vim httpd-vhosts.conf 
+systemctl enable httpd.service
+/usr/local/apache2/bin/apachectl -k restart
+ps auxf
+/usr/local/php7/bin/php -m
+vi /usr/local/php7/etc/php.ini 
+/usr/local/apache2/bin/apachectl -k restart
+/usr/local/php7/bin/php -m
+cd 
+ls
+cd soft/
+ls
+wget http://download.redis.io/releases/redis-3.2.5.tar.gz
+ls
+tar zxvf redis-3.2.5.tar.gz 
+cd redis-3.2.5/
+ls
+make
+make install
+ls
+cd src
+ls
+redis-server
+redis-server &
+ls
+cd ../
+ls
+cd ../
+ls
+wget http://pecl.php.net/get/redis-3.0.0.tgz
+ls
+tar zxvf redis-3.0.0.tgz 
+ls
+cd redis-3.0.0/
+ls
+/usr/local/php7/bin/phpize 
+ls
+./configure --with-php-config=/usr/local/php7/bin/php-config
+make
+make install
+/usr/local/php7/bin/php -m
+ls  /usr/local/php7/lib/php/extensions/no-debug-zts-20151012/
+vim /usr/local/php7/etc/php.ini 
+/usr/local/php7/bin/php -m
+/usr/local/apache2/bin/apachectl -k restart
+ls
+cd 
+ls
+cd soft/
+ls
+cd libmemcached-1.0.18/
+ls
+ls /usr/local/libmemcached/
+./configure -prefix=/usr/local/libmemcached -with-memcached 
+make 
+make install
+ls
+ls /usr/local/phpmemcached
+cd ../
+ls
+cd memcached-2.2.0/
+ls
+/usr/local/php7/bin/phpize 
+./configure --with-php-config=/usr/local/php7/bin/php-config -enable-memcached --disable-memcached-sasl -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached
+yum install zlib-devel
+./configure --with-php-config=/usr/local/php7/bin/php-config -enable-memcached --disable-memcached-sasl -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached
+make
+make install
+ls usr/local/phpmemcached
+ls /usr/local/phpmemcached
+ls /usr/local/php7/lib/php/extensions/no-debug-zts-20151012/
+vi /usr/local/php7/etc/php.ini 
+/usr/local/apache2/bin/apachectl -k restart
+/usr/local/php7/bin/php -m
+php -v
+/usr/local/php7/bin/php -v
+memcached -m
+memcached -v
+cd ../
+ll
+wget https://github.com/phpredis/phpredis/archive/php7.zip
+ls
+unzip php7.zip 
+ls;
+cd phpredis-php7/
+ls
+cd ../
+ls
+rm -fr phpredis-php7/ 
+unzip php7.zip 
+ls
+cd phpredis-php7/
+ls
+/usr/local/php7/bin/phpize 
+./configure --with-php-config=/usr/local/php7/bin/php-config
+make 
+make install
+make clear
+/usr/local/php7/bin/phpize 
+./configure --with-php-config=/usr/local/php7/bin/php-config -enable-memcached --disable-memcached-sasl -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached
+make
+make install
+./configure --with-php-config=/usr/local/php7/bin/php-config
+ls
+cd ../
+ls
+rm -f php7.zip 
+wget https://github.com/php-memcached-dev/php-memcached/archive/php7.zip
+ls
+unzip php7.zip 
+ls
+cd php-memcached-php7/
+ls
+/usr/local/php7/bin/phpize 
+ls
+./configure --with-php-config=/usr/local/php7/bin/php-config -enable-memcached --disable-memcached-sasl -with-zlib-dir -with-libmemcached-dir=/usr/local/libmemcached -prefix=/usr/local/phpmemcached
+make
+make install
+ls
+cd 
+cd soft
+ls
+cd redis-3.0.0/
+ls
+cd ../
+ls
+cd redis-3.2.5/
+ls
+cd src
+ls
+ps auxf|grep redis
+whereis redis-server
+ls
+cd 
+ls
+cd soft
+ls
+cd ../
+ls
+mysql -v
+ps auxf
+netstat -nat
+ls
+cd soft
+ls
+exit
+ps auxf|grep redis
+ls
+/usr/local/apache2/bin/apachectl -k restart
+/usr/local/php7/bin/php -m
+/usr/local/apache2/bin/apachectl -k restart
+/usr/local/php7/bin/php -m
+ls
+cd
+cd soft
+ls
+cd memcached-2.2.0/
+ls
+/usr/local/php7/bin/php 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+exit
+ls
+cd /usr/local/
+ls
+cd apache2/
+ls
+cd conf/
+³öµÄ¡¢dll
+cd /var
+ll
+cd /varl
+ll
+top
+ll
+cd /var
+cd /www
+ll
+cd ruanronshop/
+ll
+cd ..
+ll
+cd ruanronshop/
+ll
+cd ..
+ll
+cd /gitwork/
+ll
+cd ruanronshop.git/
+ll
+cd hooks/
+ll
+cat post-update.sample 
+cd ..
+ll
+cd ..
+ll
+cd pms.git/
+ll
+cd hooks/
+ll
+cd ..
+ll
+cd ..
+ll
+cd phpmyadmin.git/
+ll
+cd hooks/
+ll
+cat post-receive 
+cd ..
+ll
+cd ..
+ll
+cd pms.git/
+ll
+cd hooks/
+ll
+cat post-receive 
+cd ..
+ll
+cd ..
+ll
+cd ruanronshop.git/
+ll
+cd hooks/
+ll
+cat post-update.sample
+cp /gitwork/pms.git/hooks/post-receive 
+cp /gitwork/pms.git/hooks/post-receive post-receive
+ll
+chown git.git post-receive 
+ll
+vi post-receive 
+cd /www
+ll
+cd pms
+ll
+ll -a
+cat .flow 
+cd ..
+ll
+cd phpmyadmin/
+ll
+vi rrmsqhttp.php 
+ll .*
+ll
+ll -a
+cat rrmsqhttp.php
+vi rrmsqhttp.php
+ll
+cd /www
+ll
+cd ruanronshop/
+ll
+git fetch
+git branch -r
+ll
+cat README.md 
+ll
+cat README.md 
+ll
+cd ..
+ll
+cd phpmyadmin/
+ll
+rs
+sz
+rz
+ll
+ll rrmsqhttp.php 
+cat rrmsqhttp.php 
+rz
+cat rrmsqhttp.php 
+cat rrmsqhttp.php
+ll
+rm rrmsqhttp.php 
+ll
+cat rrmsqhttp.php
+rz
+ll
+ll rrmsqhttp.php 
+chown git.git rrmsqhttp.php 
+mysql -u root -p
+ls
+cd /usr/local/apache2/
+ls
+cd conf/
+ls
+cd extra/
+ls
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+cat httpd-vhosts.conf 
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ps auxf
+netstat -nat
+ll
+cd /
+ls
+cd www
+ls
+cd ../
+ls
+cd gitwork/
+ll
+cd /
+ll
+cd home
+ls
+ll
+ls -al
+cd /root
+ls
+ll
+cd lamp/
+ls
+cd ../
+ls
+cd soft
+ls
+cat package.xml 
+cd
+ls
+ps auxf
+top
+ls
+clear
+ls
+cd /usr/local/apache2/
+ls
+cd conf/
+ls
+cd extra/
+ls
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+top
+clear
+ps aux|grep mysql
+cat /var/log/mariadb/mariadb.log
+cd /www
+ll
+cd ruanronshop/
+ll
+cd Common/
+ll
+cd conf
+cd Co
+cd Conf/
+ll
+cata config.php 
+cat config.php 
+cd /usr/local/
+ll
+cd apache2/
+ll
+cd conf
+ll
+cd extra/
+ll
+cat httpd-vhosts.conf 
+cd /www/ruanronshop/ThinkPHP/Library/
+ll
+cd Think/
+ll
+cd Db
+ll
+cat Driver
+cat Driver.class.php 
+ll
+cd Driver/
+ll
+cd /usr/local/apache2/
+ll
+cd conf
+ll
+cd extra/
+ll
+cat httpd-vhosts.conf 
+ll
+mysql -u ruanronshop -[
+mysql -u ruanronshop -p
+mysql -u ruanronshop -p
+mysql -u root -p
+mysql -u runronshop -p
+mysql -u ruanronshop -p
+mysql -u root -p
+mysql -u ruanronshop -p
+cd /www
+ll
+cd ruanronshop/
+ll
+cd com
+cd Common/
+ll
+cd Conf
+ll
+cat config.php 
+mysql -u root -p
+llk
+ll
+cat config.php 
+ll
+cd ..
+ll
+cd Application/Admin/View/Public/css/
+LL
+ll
+cd Application/
+ll
+cd Admin/
+ll
+cd View/
+ll
+cd Public
+ll
+ls
+clear
+top
+ps auxf
+ls
+cd /usr/local/apache2/
+ls
+cd conf
+ls
+cd extra/a
+cd extra
+ls
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+cat httpd-vhosts.conf 
+ls
+cd /www
+ls
+wget http://download.edusoho.com/edusoho-7.2.9.tar.gz
+ls
+tar zxvf edusoho-7.2.9.tar.gz 
+ls
+cd edusoho/
+ls
+cd ../
+ls
+rm -f edusoho-7.2.9.tar.gz 
+ls
+cd /usr/local/apache2/
+ls
+cd conf/
+ls
+cd extra/
+ls
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+cat httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+cat httpd-vhosts.conf 
+vi httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+ll
+cd ../
+ls
+cd ../
+ll
+ls
+cd
+ls
+cd soft
+cd /www
+ls
+rm -f edusoho-7.2.9.tar.gz 
+ll
+ls
+exit
+cd /www
+ls
+cd edusoho/
+pwd
+ls
+cd web
+ll
+chmod -R 777 install/
+ll
+ls
+cd ../
+ls
+cd ../
+ls
+rm -fr edusoho/
+wget http://download.edusoho.com/edusoho-7.2.9.tar.gz
+tar zxvf edusoho-7.2.9.tar.gz 
+ls
+cd edusoho/
+ls
+cd web
+ls
+ll
+chmod 777 install/
+ls
+ll
+cat app.php 
+ls
+cd ../
+ls
+ll
+cd app
+ls
+cd config/
+ls
+cat config.yml 
+cd ../../
+ls
+cd web
+ls
+cd themes/
+ls
+cd default
+ls
+cd TopxiaWebBundle/
+ls
+cd views/
+l;s
+ls
+cd Default/
+ls
+cat header.html.twig 
+ls
+cat top-navigation.html.twig 
+cd /
+ls
+cd www
+ls
+rm -f edusoho
+rm -fr edusoho
+ls
+tar zxvf edusoho-7.2.9.tar.gz 
+ll
+chown -R git:git edusoho
+ll
+cd edusoho/
+ll
+ls
+pwd
+cd web
+ls
+ls -al
+cat .htaccess 
+exit
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+service firewall start
+ /bin/systemctl start  firewall.service
+ /usr/sbin/iptables -I INPUT -p TCP --dport 3306 -j ACCEPT
+clear
+top
+ps auxf
+netstat -nat
+exit
+cd /usr/local/apache2/
+ll
+cd conf
+ll
+cd extra/
+ll
+cat httpd-vhosts.conf 
+cd /www/pms/www
+ll
+cat index.php php
+cd /www/ruanronshop/
+ll
+cat index.php 
+whereis redis.conf
+whereis redis
+whereis redis-server 
+ps auxf
+cd /etc
+ls
+redis-server --help
+ls
+cd /
+cd
+cd soft
+ls
+cd redis-3.0.0/
+ls
+cd ../
+ls
+cd redis-3.2.5/
+ls
+cd src
+ls
+ls rediscd ../
+ls
+cd ../
+ls
+cat redis.conf 
+cp redis.conf /etc/redis.conf
+ls
+ps auxf
+kill 14573
+ps auxf
+redis-sever /etc/redis.conf 
+redis-server /etc/redis.conf 
+ echo "vm.overcommit_memory=1" > /etc/sysctl.conf 
+ps auxf
+redis-server /etc/redis.conf 
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+redis-server /etc/redis.conf &
+sysctl vm.overcommit_memory=1
+redis-server /etc/redis.conf &
+ps auxf
+ps auxf|grep redis.conf 
+ps auxf|grep redis
+kill 4884
+ps auxf|grep redis
+redis-server /etc/redis.conf 
+echo 511 > /proc/sys/net/core/somaxconn
+ps auxf|grep redis
+redis-server /etc/redis.conf 
+ps auxf|grep redis
+redis-server /etc/redis.conf 
+redis-server /etc/redis.conf  &
+ps auxf|grep redis
+vim /etc/redis.conf 
+ps auxf|grep redis
+kill 4915
+ps auxf|grep redis
+redis-server /etc/redis.conf  &
+ps auxf|grep redis
+ /usr/sbin/iptables -I INPUT -p TCP --dport 6379 -j ACCEPT
+service iptables restart
+rpm -qa | grep iptables
+rpm -qa | grep firewall
+whereis firewall-cmd
+firewall-cmd --zone=public --add-port=6379/tcp --permanent
+/usr/bin/firewall-cmd --zone=public --add-port=6379/tcp --permanent 
+service iptables restart
+/etc/init.d/iptables status 
+/usr/sbin/iptables status
+/usr/sbin/iptables -h
+ uname -a
+lsb_release -a
+cd
+/usr/bin/firewall-cmd -state
+/usr/bin/firewall-cmd -h
+/usr/bin/firewall-cmd --state
+/usr/sbin/iptables --state
+/usr/sbin/iptables --h
+/usr/sbin/iptables --table
+/usr/sbin/iptables --L
+/usr/sbin/iptables -L
+/usr/sbin/iptables stop
+/usr/sbin/iptables restart
+whereis iptables
+ls
+ls /etc/init.d/
+chkconfig iptables on
+service iptables stop
+systemctl stop firewalld
+systemctl stop iptables
+vim /etc/redis.conf 
+redis-cli -h 127.0.0.1 -p 6379
+redis-cli -h 139.224.27.198 -p 6379
+clear
+cd
+mysql -uroot -p
+redis-server /etc/redis.conf  &
+ls
+ps auxf
+ls
+exit
+ps auxf
+ps auxf|grep redis
+netstat -nat
+ps auxf|grep redis
+kill 4959
+top
+exit
+ls
+cd ..
+ls
+exit
+ps auxf
+vi /etc/redis.conf 
+ps auxf
+kill 5319
+redis-server /etc/redis.conf  &
+ps auxf
+clear
+ls
+top
+ls
+ps auxf
+ps auxf|grep  redis
+exit
+ls
+vim /etc/redis.conf 
+ps auxf
+netstat -nat
+exit
+ls
+cd /
+ls
+cd gitwork/
+ls
+git ll
+ll
+su git
+ls
+cd /usr/local/apache2/conf/extra/
+vim httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+cd /
+lks
+ls
+cd gitwork/
+ls
+su git
+vim /usr/local/apache2/conf/extra/httpd-vhosts.conf 
+/usr/local/apache2/bin/apachectl -k restart
+ls
+c d/
+cd /
+ls
+cd gitwork/
+ls
+cd jiancai.git/
+ls
+cd hooks/
+ls
+cat post-receive 
+ls /www/jiancai/
+ll
+µÄcd /
+cd /gitwork
+ll
+mkdir ruanrontrade.git
+ll
+chown git.git ruanrontrade.git
+ll
+sudu git
+su git
+cd /www
+ll
+mkdir ruanrontrade
+ll
+chown git.git ruanrontrade
+ll
+cd ruanrontrade
+ll
+cat index.txt 
+cd /usr/local/apache2/
+ll
+cd conf
+ll
+cd extra/
+ll
+cat httpd-vhosts.conf 
+vi httpd-vhosts.conf 
+ps aux|grep apac
+/usr/local/apache2/bin/httpd -k restart
+cd /www/ruanrontrade/
+ll
+cd /www
+ll
+cd ruanrontrade/
+ll
+```
