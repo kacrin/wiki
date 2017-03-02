@@ -45,4 +45,38 @@ nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx
 3 测试nginx配置：nginx -t
 ```
 
+### nginx 配置多域名 二级域名
+
+参考地址：[http://www.cnblogs.com/buffer/archive/2011/08/17/2143514.html](http://www.cnblogs.com/buffer/archive/2011/08/17/2143514.html)
+配置多个域名，可直接增加多个server{}
+
+简单配置信息
+```
+server {
+    listen       80;
+    server_name  *.kacrin.site;
+
+    location / {
+        root   /www;
+        index  index.html index.htm;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+
+server {
+    listen       80;
+    server_name  wiki.kacrin.site;
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/log/host.access.log  main;
+
+    root   /www/wiki;
+    index  index.html index.htm;
+}
+
+```
 
