@@ -23,10 +23,15 @@ deb http://mirrors.aliyun.com/kali-security kali/updates main contrib non-free
 ##  安装中文输入法 ##
 
 以下方法在local设为英文地区时无效
+首先设置 Region & language 中 Formats 为中国(汉语)
 
+然后安装 ibus 和 ibus-pinyin
 ```
 apt-get install ibus ibus-pinyin
 ```
+安装完ibus 后，在Input Sources 中，添加 Chinese 拼音,
+必须在input source 中添加Chinese(pinyin),才可以使用fcitx时使用中文
+
 ```
 apt-get install fcitx fcitx-googlepinyin
 ```
@@ -50,6 +55,7 @@ apt-get install fcitx fcitx-googlepinyin
 ```
 "xim" "X Input Method" "gtk20" "/usr/share/locale" "en:ko:ja:th:zh"
 ```
+
 
 重启计算机
 
