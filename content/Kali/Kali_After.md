@@ -31,9 +31,11 @@ apt-get install ibus ibus-pinyin
 ```
 安装完ibus 后，在Input Sources 中，添加 Chinese 拼音,
 必须在input source 中添加Chinese(pinyin),才可以使用fcitx时使用中文
+删除ibus 输入法
 
 ```
 apt-get install fcitx fcitx-googlepinyin
+apt-get remove ibus
 ```
 
 在设为为英文环境时使用fcitx中文输入法,在中文地区环境下可以，[ubuntu wiki fcix](http://wiki.ubuntu.com.cn/Fcitx)
@@ -91,6 +93,12 @@ vim
 .emacs.d配置文件，把配置文件放到 ~/ 路径下
 
 学习下emacs配置，放配置文件到git上一份
+
+在init.el 中添加,设置默认的中文字体，解决不在终端下打开，中文字体问题 
+```
+(set-fontset-font "fontset-default" 'han '("Microsoft YaHei". "unicode-bmp"))
+
+```
 
 
 
