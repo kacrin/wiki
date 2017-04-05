@@ -7,7 +7,7 @@ keywords: Hack, Tools
 description: 
 author: NANJIA
 
-root: /wiki
+root: /
 
 source: content
 destination: output
