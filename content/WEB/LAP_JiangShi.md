@@ -90,7 +90,7 @@ mysql> show variables like '%char%';
 重新配置config.php下路由大小写问题
 
 ```
-'SITE_DOMAIN'       => 'http://zxwh.jiangshi99.net',  // 主网址
+'SITE_DOMAIN'       => 'http://zxwh.xxx.net',  // 主网址
 ```
 
 ### 利用git仓库钩子自动部署(Pull)到网站目录 ###
@@ -113,9 +113,9 @@ $ git push -u origin master
 
 ```
 <VirtualHost *:80>
-        ServerName zxwh.huishi365.cn
+        ServerName zxwh.xxxx.cn
         DocumentRoot /var/www/zxwh
-        ErrorLog /var/log/apache2/error-zxwh.huishi365.log
+        ErrorLog /var/log/apache2/error-zxwh.xxxx.log
 </VirtualHost>
 ```
 

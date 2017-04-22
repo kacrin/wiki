@@ -4,12 +4,127 @@ layout: page
 date: 2016-06-07 00:00
 ---
 
-## 安装Linux服务器 ##
+## git
 
-[安装LAMP环境](http://www.cnblogs.com/wenanry/archive/2012/11/13/2767779.html)
+
+### Github添加SSH_key ###
+
+Liunx 终端下
 ```
-$ sudo apt-get install apache2 php5-mysql libapache2-mod-php5 mysql-server
+$ ssh-keygen -t rsa -C "youemail@example.com"
+$ cd .ssh
+$ cat id_rsa.pub
 ```
+生成key在.ssh文件夹下,id_rsa为私钥不能泄漏，把id_rsa.pub文件内容，添加到Setting目录下[SSH and GPG keys](https://github.com/settings/keys)->New SSH key
+- 可以添加多个key到Github上
+
+### Git ###
+
+Make dir warehouse
+```
+$ mkdir learngit
+$ cd learngit
+$ pwd
+/Users/michael/learngit
+```
+
+use the git
+```
+$ git init
+$ git add readme.md
+$ git commit -m "wrote a readme file"
+```
+
+git status命令可以让我们时刻掌握仓库当前的状态
+
+```
+$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#    modified:   readme.txt
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+git diff查看difference
+
+```
+$ git diff readme.txt
+diff --git a/readme.txt b/readme.txt
+index 46d49bf..9247db6 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -1,2 +1,2 @@
+-Git is a version control system.
++Git is a distributed version control system.
+ Git is free software.
+
+```
+
+rules before
+
+```
+$ git commit -m "upload a file"
+```
+
+[git](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000)
+
+git status Everytime look warehouse_code
+
+HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令
+```
+$ git reset --hard commit_id
+```
+穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。
+要返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本
+
+### Add Remote ###
+
+GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库
+```
+$ git remote add origin git@github.com:michaelliao/learngit.git
+```
+
+远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库
+
+把本地master分支的最新修改推送至GitHub
+```
+$ git push -u origin master
+```
+
+此后，每次本地提交后，只要有必要，就可以使用命令,推送最新修改
+```
+git push origin master
+```
+
+### git branch ###
+
+```
+查看分支
+$ git branch
+
+创建分支
+$ git branch <name>
+
+切换分支
+$ git checkout <name>
+
+创建+切换分支
+$ git checkout -b <name>
+
+合并某分支到当前分支
+$ git merge <name>
+
+删除分支
+git branch -d <name>
+
+```
+
+
+## git install
 
 ### inux ###
 
@@ -84,29 +199,17 @@ $ git remote add origin /home/ninjia/warehouse.git
 
 修改hooks文件夹下post-receive.sample文件去掉.sample
 使用bash脚本，修改post-receive如下
+定义输出路径/www/warehouse 强制输出覆盖到此路径
 ```
 #!/bin/sh
-export LANG=zh_CN.UTF-8
-cd /var/www/warehouse
-unset GIT_DIR
-git pull origin master
+git --work-tree=/www/warehouse checkout -f
 ```
-使用git后，push文件后需要git pull到服务器上才可以更新
-git有勾子设置，在hooks文件夹内，调用勾子时shell脚本可以执行，但是git pull时会报错，提示"fatal:Not a git repository;".原因是执行cd后，继续执行git语句拉取到时候还是在hooks文件夹下，不是cd到文件路径
-
-**添加unset GIT_DIR**
-git的hooks里面默认有一些环境变量，会导致无论在哪个语句之后执行git命令都会有一个默认的环境路径，既然这样unset 掉默认的GIT环境变量就可以了
-
-**一定要设置warehouse.git文件夹下权限和/var/www/warehouse/.git/文件夹下所有文件权限**
-在普通用户组非root的权限下，需要设置文件归属
-设置warehouse.git和.git所有文件归属为git:git用户
 
 ```
 $ cd /home/ninjia/warehouse.git
 $ chown git:git * -R
 $ cd /var/www/warehouse/.git
 $ chown git:git * -R
-
 ```
 
 
