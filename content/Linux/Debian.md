@@ -42,4 +42,4 @@ update-rc.d apache2 defaults 20 80
 ```
 update-rc.d apache2 start 20 2 3 4 5 . stop 80 0 1 6 .
 ```
-其中0～6为运行级别。 update-rc.d命令不仅适用Linux服务，编写的脚本同样可以用这个命令设为开机自动运行 
+其中0～6为运行级别,update-rc.d命令不仅适用Linux服务，编写的脚本同样可以用这个命令设为开机自动运行 
