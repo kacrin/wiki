@@ -1,5 +1,5 @@
 ---
-title: "Centos Sever"
+title: "nginx"
 layout: page
 date: 2017-02-09 23:00
 ---

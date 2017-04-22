@@ -1,5 +1,5 @@
 ---
-title: "Centos Sever"
+title: "Centos"
 layout: page
 date: 2016-11-03 23:00
 ---

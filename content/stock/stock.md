@@ -1,5 +1,5 @@
 ---
-title: "STOCK"
+title: "Stock"
 layout: page
 date: 2016-6-3 23:00
 ---
