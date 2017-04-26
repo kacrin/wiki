@@ -9,6 +9,8 @@ date: 2017-03-15 00:00
 首先配 干货地址 
 
 [静觅 个人博客](http://cuiqingcai.com/category/technique/python)
+[爬虫破解IP限制 ADSL拨号](https://www.urlteam.org/2016/08/%E7%88%AC%E8%99%AB%E7%A0%B4%E8%A7%A3ip%E9%99%90%E5%88%B6-adsl%E5%8A%A8%E6%80%81ip%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%83%A8%E7%BD%B2%E5%B0%8F%E7%BB%93/)
+[使用tor 绕过ip限制](https://www.urlteam.org/2016/12/%E5%9F%BA%E4%BA%8Etor%E5%8C%BF%E5%90%8D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%A4%9Aip%E7%88%AC%E8%99%AB/)
 
 ## 爬虫突破封禁方法
 
