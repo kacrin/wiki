@@ -5,7 +5,7 @@ date: 2016-6-3 23:00
 ---
 
 
-## 迷茫时就看看的文章 ##
+## 余弦
 
 [知乎 自学成才黑客(Terry Zhang,余弦...)](https://www.zhihu.com/question/23073812)
 
@@ -31,11 +31,17 @@ FreeMind
 
 ### rss 阅读器 ###
 
+[Android RSS Inoreader](http://feedly.com)
+
 [网页版 RSS 阅读器 Feedly](http://feedly.com)
 
 [命令行 简易 RSS 阅读器 Feednix](http://ju.outofmemory.cn/entry/180310)
 
 [创宇 余弦 rss订阅列表](https://link.zhihu.com/?target=http%3A//evilcos.me/evilcos_rss_2014.opml)
+
+### google 商店
+
+googole store
 
 ### 管理好自己密码 ###
 
