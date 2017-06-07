@@ -6,6 +6,8 @@ date: 2017-06-07 00:00
 
 # python send email
 
+[python发送email](http://yuanjun.me/python/pyemail)
+
 [廖雪峰 - SMTP发送邮件](http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432005226355aadb8d4b2f3f42f6b1d6f2c5bd8d5263000)
 
 [发送各种附件](http://blog.csdn.net/handsomekang/article/details/9811355#)
