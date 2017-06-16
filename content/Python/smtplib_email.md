@@ -16,6 +16,8 @@ date: 2017-06-07 00:00
 
 [解决附件名乱码](http://blog.csdn.net/betry/article/details/6657429)
 
+[SMTP错误码/建议解决方法](http://blog.csdn.net/chenfei_5201213/article/details/10138969)
+
 ## 发送纯文本邮件
 
 SMTP是发送邮件的协议，Python内置对SMTP的支持，可以发送纯文本邮件、HTML邮件以及带附件的邮件。

@@ -156,8 +156,40 @@ save()可以替换现有文档
 >db.collection.remove()
 ```
 
+### renameCollection
 
+修改 database 或者 collections 名字
 
+```
+>db.adminCommand({renameCollection: "db1.test1", to: "db2.test2"})
+```
+
+db2未创建时自动创建,迁移db1所有collection，使用如下js脚本即可
+
+```
+var source = "source";
+var dest = "dest";
+var colls = db.getSiblingDB(source).getCollectionNames();
+for (var i = 0; i < colls.length; i++) {
+    var from = source + "." + colls[i];
+    var to = dest + "." + colls[i];
+    db.adminCommand({renameCollection: from, to: to});
+}
+```
+
+## mongodump
+
+备份数据
+
+```
+> mongodump --host 127.0.0.1 --port 27017 -u root --password root@mongodb --authenticationDatabase admin -o /root/backups/ -d local
+```
+
+--authenticationDatabase 制定帐号认证仓库
+
+-o 保存路径，不设置默认当前路径
+
+-d 备份仓库,不设置默认全部仓库;同时不设置路径情况下，会在当前路径下创建dump文件夹
 
 
 

