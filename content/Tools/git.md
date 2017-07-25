@@ -123,6 +123,11 @@ git branch -d <name>
 
 ```
 
+回撤单个文件,实现方法
+```
+$ git checkout <commit-hash> <name-file>
+```
+回撤的文件成已从修改commit 状态,可直接checkout -f <name-file> 撤回
 
 ## git install
 
