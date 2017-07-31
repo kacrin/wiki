@@ -45,7 +45,8 @@ pip install selenium
 ```
 
 [Download Phantomjs](http://phantomjs.org/download.html)
-下载对应linux 版本,解压,放到/sbin目录下,赋777权限,安装依赖库
+下载对应linux 版本,解压,放到/usr/bin/目录下,赋777权限
+需要依赖库，安装依赖库
 ```
 yum -y install fontconfig
 或
