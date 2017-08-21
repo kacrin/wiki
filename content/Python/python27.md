@@ -4,6 +4,12 @@ layout: page
 date: 2017-02-09 23:00
 ---
 
+# intro
+
+在线手册中心 [http://docs.pythontab.com/](http://docs.pythontab.com/)
+
+Python 研究(Dive Into Python) [http://shouce.jb51.net/python/](http://shouce.jb51.net/python/)
+
 # Python
 
 ## python2.7 安装升级
