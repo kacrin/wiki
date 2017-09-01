@@ -9,7 +9,7 @@ date: 2017-03-15 00:00
 首先配 干货地址 
 
 [静觅 个人博客](http://cuiqingcai.com/category/technique/python)
-[爬虫破解IP限制 ADSL拨号](https://www.urlteam.org/2016/08/%E7%88%AC%E8%99%AB%E7%A0%B4%E8%A7%A3ip%E9%99%90%E5%88%B6-adsl%E5%8A%A8%E6%80%81ip%E6%9C%8D%E5%8A%A1%E5%99%A8-%E9%83%A8%E7%BD%B2%E5%B0%8F%E7%BB%93/)
+[URL-Team 数据挖掘](https://www.urlteam.org/tag/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/)
 [使用tor 绕过ip限制](https://www.urlteam.org/2016/12/%E5%9F%BA%E4%BA%8Etor%E5%8C%BF%E5%90%8D%E7%BD%91%E7%BB%9C%E7%9A%84%E5%A4%9Aip%E7%88%AC%E8%99%AB/)
 
 ## 爬虫突破封禁方法
@@ -45,7 +45,8 @@ pip install selenium
 ```
 
 [Download Phantomjs](http://phantomjs.org/download.html)
-下载对应linux 版本,解压,放到/sbin目录下,赋777权限,安装依赖库
+下载对应linux 版本,解压,放到/usr/bin/目录下,赋777权限
+需要依赖库，安装依赖库
 ```
 yum -y install fontconfig
 或
@@ -63,7 +64,7 @@ pip install selenium.whl
 [Download Phantomjs](http://phantomjs.org/download.html)
 下载对应windows版本，PhantomJS.exe到/windwos/system32 目录下
 
-## 测试例子
+### 测试例子
 
 ```
 from selenium import webdriver
@@ -75,3 +76,6 @@ driver.quit()
 ```
 
 
+## 验证码绕过
+
+[TensorFlow识别字母扭曲干扰型验证码-开放源码与98%模型](https://www.urlteam.org/2017/03/tensorflow%E8%AF%86%E5%88%AB%E5%AD%97%E6%AF%8D%E6%89%AD%E6%9B%B2%E5%B9%B2%E6%89%B0%E5%9E%8B%E9%AA%8C%E8%AF%81%E7%A0%81-%E5%BC%80%E6%94%BE%E6%BA%90%E7%A0%81%E4%B8%8E98%E6%A8%A1%E5%9E%8B/)
