@@ -112,6 +112,22 @@ where number < 50
 ne !=
 ```
 
+排序
+
+```
+db.collection.find().sort("_id") --默认为升序
+
+db.collection.find().sort("_id",pymongo.ASCENDING) --升序
+
+db.collection.find().sort("_id",pymongo.DESCENDING) --降序
+```
+
+多条件查询
+
+```
+db.collection.find().sort([("UserName",pymongo.ASCENDING),("Email",pymongo.DESCENDING)])
+```
+
 AND语法
 ```
 >db.mycol.find({key1:value1, key2:value2})
