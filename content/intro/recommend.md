@@ -106,3 +106,13 @@ redis
 ## Golang
 
 Go语言学习
+
+## React Native
+
+中文网[http://reactnative.cn/](http://reactnative.cn/)
+
+React Native使你能够在Javascript和React的基础上获得完全一致的开发体验，构建世界一流的原生APP。
+
+React Native着力于提高多平台开发的开发效率 —— 仅需学习一次，编写任何平台。(Learn once, write anywhere)
+
+Facebook已经在多项产品中使用了React Native，并且将持续地投入建设React Native。

@@ -42,14 +42,24 @@ apt-get remove ibus
 系统使用gnome3,需要配置/usr/lib/x86_64-linux-gnu/gtk-3.0/3.0.0/immodules.cache,可以使终端使用中文输入法
 在文件中，将
 ```
-"xim" "X Input Method" "gtk20" "/usr/share/locale" "ko:ja:th:zh"
+"xim" "X Input Method" "gtk30" "/usr/share/locale" "ko:ja:th:zh"
 ```
 改为
 ```
-"xim" "X Input Method" "gtk20" "/usr/share/locale" "en:ko:ja:th:zh"
+"xim" "X Input Method" "gtk30" "/usr/share/locale" "en:ko:ja:th:zh"
 ```
+
+```
+"fcitx" "Fcitx (Free Chinese Input Toy of X)" "fcitx" "/usr/share/locale" "ja:ko:zh:*" 
+```
+改为
+```
+"fcitx" "Fcitx (Free Chinese Input Toy of X)" "fcitx" "/usr/share/locale" "en:ja:ko:zh:*" 
+```
+
 在文件 /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/immodules.cache同样将文件
 即可实现浏览器使用gtk-2.0程序，使用中文输入法
+
 ```
 "xim" "X Input Method" "gtk20" "/usr/share/locale" "ko:ja:th:zh"
 ```
@@ -58,6 +68,13 @@ apt-get remove ibus
 "xim" "X Input Method" "gtk20" "/usr/share/locale" "en:ko:ja:th:zh"
 ```
 
+```
+"fcitx" "Fcitx (Free Chinese Input Toy of X)" "fcitx" "/usr/share/locale" "ja:ko:zh:*" 
+```
+改为
+```
+"fcitx" "Fcitx (Free Chinese Input Toy of X)" "fcitx" "/usr/share/locale" "en:ja:ko:zh:*" 
+```
 
 重启计算机
 
