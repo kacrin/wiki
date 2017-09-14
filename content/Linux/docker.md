@@ -1,30 +1,33 @@
 ---
-title: "docker"
+title: "Docker"
 layout: page
 date: 2016-11-17 23:00
 ---
 
-#question 
+# Intro
 
-使用数据卷地址需要命名，下次如何使用相同的路径共享到docker中
-使用名字启动时，使用volume再次把路径传进去？
+Docker — 从入门到实践[https://yeasy.gitbooks.io/docker_practice/content/](https://yeasy.gitbooks.io/docker_practice/content/)
+
+Docker — DaoCloud[http://guide.daocloud.io/dcs/daocloud-9153151.html](http://guide.daocloud.io/dcs/daocloud-9153151.html)
+
+Docker — RUNOOB[http://www.runoob.com/docker/docker-tutorial.html](http://www.runoob.com/docker/docker-tutorial.html)
+
+Docker — 极客学院[http://wiki.jikexueyuan.com/project/docker/](http://wiki.jikexueyuan.com/project/docker/)
+
+Docker 中文指南 [http://www.widuu.com/docker/index.html](http://www.widuu.com/docker/index.html)
+
+Docker 官方文档 [https://docs.docker.com/engine/installation](https://docs.docker.com/engine/installation)
+
+## DaoCloud
+
+[DaoCloud](https://www.daocloud.io/mirror#accelerator-doc)提供 pull 加速 永久使用
+
+# Install
+
+# docker 镜像
 
 
-
-
-#DaoCloud
-
-[国内 部署 搭建 发布 docker](https://dashboard.daocloud.io)
-
-提供 pull 加速 永久使用
-
-#docker 安装
-
-
-#docker 镜像
-
-
-#docker 容器
+# docker 容器
 
 新建并启动容器使用 docker run 
 

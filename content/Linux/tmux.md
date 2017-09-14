@@ -14,3 +14,122 @@ Tmux 速成教程：技巧和调整 [http://blog.jobbole.com/87584/](http://blog
 Tmux 入门介绍 [http://blog.jobbole.com/87278/](http://blog.jobbole.com/87278/)
 
 Tmux 入门指南 [https://linux.cn/article-5800-1.html](https://linux.cn/article-5800-1.html)
+
+tmux: Productive Mouse-Free Development 中文版[https://www.kancloud.cn/kancloud/tmux/62459](https://www.kancloud.cn/kancloud/tmux/62459)
+
+
+# config
+
+```
+#-------[ General ]----------------------------------------# {
+set -g default-terminal "screen-256color"	#Terminal setting
+set -g display-time 3000                 	#Time(ms) to show the message bar
+set -g escape-time 200
+set-window-option -g automatic-rename off	#disable window title auto-rename
+set-option -g buffer-limit 16            	#Number of copy buffers.
+set -g history-limit 65535               	#History
+
+setw -g mode-keys vi                     	#Use Vi mode
+set -g status-keys vi                    	#Use Vi mode
+
+#set -g mouse-select-pane on
+#set -g mouse-resize-pane on             	#resize panel with mouse
+#set -g mouse-select-window on           	#select window with mouse
+#setw -g mode-mouse on						#Make mouse useful in copy mode
+
+#}
+
+#-------[ Window/Pane ]----------------------------------------# {
+set -g base-index 1  # Panel, window 1 base
+set -g pane-base-index 1 #Panel 1 base
+#set -g message-bg "default"			# Color of the message bar.
+set -g message-attr "bold"			# Style attributes for status line messages.
+set -g display-panes-active-colour blue #highlight active panel border with blue
+set -g display-panes-colour colour250 #orange
+# pane border
+set -g pane-border-fg colour235 #base02
+set -g pane-active-border-fg colour240 #base01
+#}
+
+#-------[ Key Binding ]----------------------------------------# {
+
+unbind C-b  
+set -g prefix C-a # change prefix key to Ctrl-a, same as gnu screen
+bind a send-prefix #send ^A
+
+unbind ,
+bind A command-prompt "rename-window '%%'" #rename window by A
+
+unbind [
+bind Escape copy-mode  # Copy mode
+
+
+
+#window navigation
+bind -n 'F12' next
+bind -n 'F11' prev
+
+# More straight forward key bindings for splitting
+unbind %
+bind | split-window -h
+
+unbind '-'
+bind - split-window -v
+
+#switch panels
+bind k selectp -U # switch to panel Up
+bind j selectp -D # switch to panel Down 
+bind h selectp -L # switch to panel Left
+bind l selectp -R # switch to panel Right
+
+bind q killp #kill panel
+bind-key -t vi-copy 'v' begin-selection		# Begin selection in copy mode.
+bind-key -t vi-copy 'C-v' rectangle-toggle	# Begin selection in copy mode.
+bind-key -t vi-copy 'y' copy-selection		# Yank selection in copy mode.
+bind-key <      swap-window -t :-
+bind-key >      swap-window -t :+
+#}
+
+#-------[ Status Bar and colors ]----------------------------------------# {
+set -g status-utf8 on
+set -g status-bg black
+set -g status-fg blue
+
+set -g status-left "#[fg=colour250,bold,bg=colour235][#S]#[default]"
+
+setw -g clock-mode-colour green
+setw -g clock-mode-style 24
+setw -g window-status-current-format '#[fg=black,bg=colour167]❰#[bold,fg=black, bg=colour74] #I #W '
+setw -g window-status-separator ""
+setw -g window-status-format "#[fg=colour243,bg=colour237,bold]❰#[fg=colour250,bg=colour240] #I #W "
+
+set -g status-right-length 50
+#cpu load
+set -g status-right "#[fg=black,bg=colour72,bold]❰#[fg=black,bg=colour109,bold]"
+set -ga status-right " U:#(uptime|sed 's/.*:.//'|sed 's/,//g') "
+#ram usage
+set -ga status-right "#[fg=black,bg=colour72,bold]❰#[fg=black,bg=colour109,bold]"
+set -ga status-right " M:#(free|awk 'NR==2{printf \"%.2f\", 100*$3/$2}')% "
+set -ga status-right "#[fg=black,bg=colour72,bold]❰#[fg=black,bg=colour109,bold] %Y-%m-%d %H:%M#[default]"
+
+set -g status-interval 5
+set -g message-style "fg=black,bg=colour109,bold"
+set -g message-command-style "fg=black,bg=colour109,bold"
+
+
+#setw -g window-status-activity-bg colour23
+#setw -g window-status-activity-fg colour239
+set -g visual-activity on
+setw -g monitor-activity on
+#}
+
+#-------[ Commands ]----------------------------------------# {
+
+# open a panel for man page
+bind m command-prompt "splitw -h 'exec man %%'"
+bind '~' splitw htop
+#reload config
+bind r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
+#}
+# vim: fdm=marker foldmarker={,} 
+```
