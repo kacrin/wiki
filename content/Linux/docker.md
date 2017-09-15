@@ -20,9 +20,29 @@ Docker 官方文档 [https://docs.docker.com/engine/installation](https://docs.d
 
 ## DaoCloud
 
-[DaoCloud](https://www.daocloud.io/mirror#accelerator-doc)提供 pull 加速 永久使用
+[DaoCloud](https://www.daocloud.io/mirror#accelerator-doc) 提供 pull 加速 永久使用
 
 # Install
+
+[Docker安装 官方文档](https://docs.docker.com/engine/installation/)
+
+## Centos
+
+### Centos7
+
+```
+yum -y install docker
+```
+
+## Debian
+
+Debian中分为 Jessie or Stretch 和 Wheezy
+
+使用dpkg安装Wheezy版本,在[安装包地址](https://download.docker.com/linux/debian/dists/wheezy/pool/stable/)选择版本 下载
+
+```
+dpkg -i package.deb
+```
 
 # docker 镜像
 
