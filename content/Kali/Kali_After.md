@@ -156,6 +156,21 @@ kali 本身自带 php apache2 mysql
 开启 rewrite_modules
 配置子域名
 
+### apache 重写
+
+Linux开启url重写的方法：
+
+打开 apache 里httpd.conf（通常是在/etc/httpd/conf目录里）
+
+找到 #LoadModule rewrite_module modules/mod_rewrite.so 去掉前面的#
+
+找到 AllowOverride None 改成 AllowOverride All , 有两个全部改掉
+
+注：AllowOverride 的参数设置为ALL，表示整台服务器上都支持URL规则重写。Apache 服务器要读每个网站下目录下的 .htaccess 文件。如果没有这个文件，或者这个文档没有定义任何关于URL重写的规则就不会有任何效果。
+
+重启apache (用命令：service httpd restart)。
+
+
 ### phpmyadmin 安装
 
 安装phpmyadmin,并把phpmyadmin映射到/var/www/html/ 目录下
@@ -265,6 +280,8 @@ scp root@172.19.2.75:/root/.bash_history /root/Desktop/bash_history
 
 ## smb
 
+smb
+
 ```
 #列出某个ip所提供共享文件夹
 smbclient -L 192.168.3.145 -U username%password
@@ -281,7 +298,22 @@ mount -t cifs //192.168.3.145/项目 ~/root/share -o username=root,password=pw
 smbmount //192.168.3.145/项目 ~/home/share -o username=root,password=pw
 #or 
 mount -t smbfs //192.168.3.145/项目 ~/root/share -o username=root,password=pw
+```
 
+smbclient连接批量拉取文件
+```
+smbclient -Udomainname/fordodone //10.234.92.21/sharename
+Password:
+Domain=[DOMAINNAME] OS=[Windows 5.0] Server=[Windows 2000 LAN Manager]
+smb: \> cd testdir
+smb: \testdir\> get C
+NT_STATUS_FILE_IS_A_DIRECTORY opening remote file \testdir\C
+smb: \testdir\> prompt
+smb: \testdir\> recurse
+smb: \testdir\> mget C
+getting file ...
+
+```
 
 ## tmux
 
