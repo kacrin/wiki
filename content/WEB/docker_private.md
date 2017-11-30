@@ -1,7 +1,7 @@
-﻿---
+---
 title: "docker private"
 layout: page
-date: 2017-11-29 02:00
+date: 2017-11-29 00:00
 ---
 
 # Docker 私有化 搭建
@@ -466,7 +466,6 @@ update.sh 内容
 cd /var/www/html/
 git pull origin master
 ```
-
 
 
 
