@@ -26,11 +26,11 @@ date: 2017-11-29 00:00
 
 上传镜像  本地使用 scp 上传
 ```
-# scp p2ps.tar root@122.22.22.22:/root/p2ps.tar
+# scp imagename.tar root@122.22.22.22:/root/imagename.tar
 ```
 导入镜像
 ```
-# docker load p2ps.tar
+# docker load imagename.tar
 ```
 查看镜像
 ```
@@ -38,8 +38,8 @@ date: 2017-11-29 00:00
 ```
 代码 映射，文件夹赋予权限
 ```
-# scp p2ps_code.tar root@122.22.22.22:/var/www/html/p2ps_code.tar
-# tar -xvf p2ps_code.tar
+# scp name_code.tar root@122.22.22.22:/var/www/html/name_code.tar
+# tar -xvf name_code.tar
 # rm -rf /var/www/html/src/runtime/*
 # chmod 777 /var/www/html/src/runtime
 # chomd 777 /var/www/html/builds
@@ -57,7 +57,7 @@ date: 2017-11-29 00:00
 启动容器 
 ```
 # docker run --name mongo_server -v /var/mongo:/data/db -d mongo:laster
-# docker run -idt -p 80:80 -p 127.0.0.1:1022:22 -v /var/www/html:/var/www/html --link mongo_server:mongo  p2ps/private:v2
+# docker run -idt -p 80:80 -p 127.0.0.1:1022:22 -v /var/www/html:/var/www/html --link mongo_server:mongo  dockername/private:v2
 ```
 > -p : 映射本地到容器端口
 > -v : 映射文件/夹
@@ -151,7 +151,7 @@ try{
     $postFields = [
         'sendMessage' => [
             'password' => 'passwd',
-            'source' => 'p2ps',
+            'source' => 'source',
             'phone' => '13987654321',
             'message' => urldecode ( '发送内容' )
         ]
@@ -262,11 +262,11 @@ EOF
 
 dockerfile 文件内容
 ```
-FROM p2ps/close:v1   //使用镜像名称
+FROM dockername/close:v1   //使用镜像名称
 MAINTAINER jooyum    //作者
 CMD ["/run.sh"]
 ```
-dockerfile 命令详解 （  https://www.tuicool.com/articles/zeeyQbi  ）
+dockerfile 命令详解 （  [https://www.tuicool.com/articles/zeeyQbi](https://www.tuicool.com/articles/zeeyQbi)  ）
 
 构建容器
 ```
@@ -278,7 +278,7 @@ dockerfile 命令详解 （  https://www.tuicool.com/articles/zeeyQbi  ）
 ## 打包导出镜像
 
 ```
-# docker save [REPOSITORY[:TAG]] > /root/p2ps.tar
+# docker save [REPOSITORY[:TAG]] > /root/dockername.tar
 ```
 
 # REMARK
@@ -369,7 +369,7 @@ git   ALL=(ALL)      NOPASSWD:ALL
 ```
 注释掉
 ```
-Defaults    requiretty  
+Defaults    requiretty
 修改为 
 #Defaults    requiretty，表示不需要控制终端。
 ```
