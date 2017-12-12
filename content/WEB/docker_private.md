@@ -12,6 +12,7 @@ date: 2017-11-29 00:00
 > * 进入 Docker 配置
 
 ---
+
 ## Docker 安装
 
 安装 docker
@@ -22,15 +23,65 @@ date: 2017-11-29 00:00
 ```
 # systemctl start docker
 ```
+## 数据盘格式化挂载
+linux 查看磁盘分区格式
+```
+查看磁盘卷标：
+可以使用命令e2lable,例如：
+    e2lable /dev/sda1
+
+查看磁盘分区格式：
+可以使用命令df，例如：
+    df -T /dev/sdb1
+```
+
+格式化磁盘
+```
+格式化成ext3格式
+mkfs.ext3 /dev/hdb1
+
+格式化成reiserfs的格式
+mkfs.reiserfs /dev/hdb1
+```
+
+挂载磁盘
+```
+# mount -t ntfs /dev/sdc1 /mnt/usbhd1
+```
+> -t  使用挂载格式
+
+
+硬盘自动挂载
+```
+# echo "/dev/vdb /var/www ext4 defaults 0 0" >> /etc/fstab
+```
+> 重启后即可自动挂载
+
+
+使用 uuid 挂载硬盘
+
+首先使用lsblk命令可以清晰的获取全局的块设备布局
+使用blkid命令可以获取设备的UUID。记下UUID
+```
+# blkid
+/dev/vdb: UUID="848b12bd-cac7-488b-bb25-39ea43cbdeb1" TYPE="ext4" 
+/dev/block/253:2: UUID="5f997169-5b65-4824-8b79-139ea71b6c62" TYPE="xfs" 
+/dev/block/253:1: UUID="257908d9-5b0c-4f10-be1e-9a54dd6b8e39" TYPE="xfs" 
+```
+加入到开机启动
+```
+echo "UUID=848b12bd-cac7-488b-bb25-39ea43cbdeb1 /var/www ext4 defaults 0 0" >> /etc/fstab
+```
+
 ## 上传导入镜像
 
 上传镜像  本地使用 scp 上传
 ```
-# scp imagename.tar root@122.22.22.22:/root/imagename.tar
+# scp dockerimg.tar root@122.22.22.22:/root/dockerimg.tar
 ```
 导入镜像
 ```
-# docker load imagename.tar
+# docker load dockerimg.tar
 ```
 查看镜像
 ```
@@ -38,8 +89,8 @@ date: 2017-11-29 00:00
 ```
 代码 映射，文件夹赋予权限
 ```
-# scp name_code.tar root@122.22.22.22:/var/www/html/name_code.tar
-# tar -xvf name_code.tar
+# scp code.tar root@122.22.22.22:/var/www/html/code.tar
+# tar -xvf code.tar
 # rm -rf /var/www/html/src/runtime/*
 # chmod 777 /var/www/html/src/runtime
 # chomd 777 /var/www/html/builds
@@ -56,8 +107,9 @@ date: 2017-11-29 00:00
 
 启动容器 
 ```
-# docker run --name mongo_server -v /var/mongo:/data/db -d mongo:laster
-# docker run -idt -p 80:80 -p 127.0.0.1:1022:22 -v /var/www/html:/var/www/html --link mongo_server:mongo  dockername/private:v2
+# docker run --hostname my-rabbit --name rabbit -d rabbitmq
+# docker run --name mongo_server -v /var/mongo:/data/db -d mongo:lastest
+# docker run -idt -p 80:80 -p 127.0.0.1:1022:22 -v /var/www/html:/var/www/html --link mongo_server:mongo --link rabbit:rabbit dockerimg/private:v2
 ```
 > -p : 映射本地到容器端口
 > -v : 映射文件/夹
@@ -69,22 +121,28 @@ date: 2017-11-29 00:00
 
 ```
 # ssh root@localhost -p1022
-# passwd : password
+# passwd : jooyum
 ```
-容器密码为 password
+容器密码为 jooyum
 
 ## mysql 设置远程访问
 
+设置mysql密码
+```
+mysql> update mysql.user set password=password('新密码') where User="admin" and Host="localhost";
+mysql> flush privileges;
+```
+
 授权用户,你想root使用密码从任何主机连接到mysql服务器
 ```
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'  IDENTIFIED BY 'admin123'  WITH GRANT OPTION;
-flush privileges;
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'  IDENTIFIED BY 'admin123'  WITH GRANT OPTION;
+mysql> flush privileges;
 ```
 
 如果你想允许用户root从ip为192.168.1.104的主机连接到mysql服务器
 ```
-GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'192.168.1.104'   IDENTIFIED BY 'admin123'  WITH GRANT OPTION; 
-flush privileges;
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'192.168.1.104'   IDENTIFIED BY 'admin123'  WITH GRANT OPTION; 
+mysql> flush privileges;
 ```
 
 # Docker 构建
@@ -151,7 +209,7 @@ try{
     $postFields = [
         'sendMessage' => [
             'password' => 'passwd',
-            'source' => 'source',
+            'source' => 'dockerimg',
             'phone' => '13987654321',
             'message' => urldecode ( '发送内容' )
         ]
@@ -221,6 +279,30 @@ upload_max_filesize = 20M
 session.gc_maxlifetime = 28800
 ```
 
+设置https证书
+```
+# yum install mod_ssl openssl
+```
+配置443端口，在http.cnf后面添加
+```
+<VirtualHost *:80>
+    DocumentRoot "/var/www/html"
+    ServerName my.web.cn
+    ServerAdmin  my.web.cn
+</VirtualHost>
+<VirtualHost *:443>
+    DocumentRoot "/var/www/html"
+    ServerName  my.web.cn
+    ServerAdmin  my.web.cn
+    SSLEngine on
+    SSLCertificateFile "/etc/httpd/ssl/ my.web.cn.crt"
+    SSLCertificateKeyFile "/etc/httpd/ssl/ my.web.cn.key"
+    SSLCertificateChainFile "/etc/httpd/ssl/server_ca.crt"
+    SSLProtocol  all -SSLv2 -SSLv3
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+</VirtualHost>
+```
+
 关闭Apache的目录浏览 配置文件httpd.conf
 ```
 查找 
@@ -262,11 +344,11 @@ EOF
 
 dockerfile 文件内容
 ```
-FROM dockername/close:v1   //使用镜像名称
+FROM dockerimg/close:v1   //使用镜像名称
 MAINTAINER jooyum    //作者
 CMD ["/run.sh"]
 ```
-dockerfile 命令详解 （  [https://www.tuicool.com/articles/zeeyQbi](https://www.tuicool.com/articles/zeeyQbi)  ）
+dockerfile 命令详解 （  https://www.tuicool.com/articles/zeeyQbi  ）
 
 构建容器
 ```
@@ -278,7 +360,7 @@ dockerfile 命令详解 （  [https://www.tuicool.com/articles/zeeyQbi](https://
 ## 打包导出镜像
 
 ```
-# docker save [REPOSITORY[:TAG]] > /root/dockername.tar
+# docker save [REPOSITORY[:TAG]] > /root/dockerimg.tar
 ```
 
 # REMARK
@@ -369,7 +451,7 @@ git   ALL=(ALL)      NOPASSWD:ALL
 ```
 注释掉
 ```
-Defaults    requiretty
+Defaults    requiretty  
 修改为 
 #Defaults    requiretty，表示不需要控制终端。
 ```
